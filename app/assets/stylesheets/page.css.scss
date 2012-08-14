@@ -1,0 +1,189 @@
+// Place all the styles related to the Pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+html, body {
+  height: 100%;
+  background-color: #f0f0f0;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Geneva, sans-serif;
+  font-size: 18px;
+  line-height: 18px;
+  margin: 0;
+  width: 100%;
+  // height: image-height("timthumb.jpg"); // @extend .lucida
+}
+
+#main {
+  background: transparent;
+  width: image-width("timthumb.jpg");
+  //height: 100%;
+  margin: 0 auto;
+  @include border-radius;
+  @include single-box-shadow(#111,0,0,25px);
+  #bgimage {
+    background: image-url("timthumb.jpg") no-repeat center;
+    height: image-height("timthumb.jpg");
+    width: image-width("timthumb.jpg");
+  }
+}
+
+.container {
+  @include container;
+}
+
+a, a:visited, a:hover { text-decoration: none; }
+
+header, footer {
+  @include span-columns(12);
+  height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px 0 0 0;
+  nav {
+    @include border-radius;
+    @include background-image(linear-gradient(#3f3f3f, #000));
+    height: 50px;
+    margin: 0 auto;
+    @include clearfix;
+    #logo {
+      float: left;
+      margin-left: 2%;
+      &:hover { @include opacity(.7); }
+    }
+    ul {
+      color: $nav-link-color;
+      line-height: 50px;
+      vertical-align: middle;
+      font-size: .8em;
+      float: right;
+      @include inline-list;
+      z-index: 1;
+      li {
+        a, a:visited {
+          padding: 0 .9em;
+          color: white;
+          cursor: pointer;
+          &:hover { color: $nav-link-hover-color; }
+
+        }
+      }
+    }
+  }
+}
+footer {
+  margin-bottom: 1em;
+  nav {
+    font-size: 12px;
+    height: 40px;
+    ul {
+      margin-left: 2%;
+      line-height: 40px;
+      float: left;
+      li {
+        a, a:visited { color: $blue; padding: 0px; }
+        span { padding: 0 5px; }
+        &:after {
+          content: " | ";
+        }
+        &:last-child:after {
+          content: " ";
+        }
+      }
+    }
+  }
+  }
+#caption {
+  position: absolute;
+  top: 9.5em;
+  padding: 10px 4%;
+  background: rgba(255,255,255,0.3);
+  @include border-radius;
+  //@include opacity(.9);
+  h2 {
+    color: $black;
+    line-height: 1.2em;
+    font-size: 1.2em;
+    font-weight: normal;
+    div { color: lighten($black, 10%); }
+  }
+}
+
+.blank-middle {
+  height: 16em;
+}
+
+.featurebox {
+  background: rgba(255,255,255,0.8);
+  padding: 10px 2%;
+  @include border-radius;
+  width: 90%;
+  margin: 0 auto 2em auto;
+  border: 1px solid $grey;
+  @include single-box-shadow(#666,0,0,10px);
+  h3 {
+    font-weight: normal;
+  }
+  p {
+    font-weight: 100;
+    line-height: 1.2em;
+    margin-left: 5%;
+  }
+  img { width: 100%; @include single-box-shadow(#111,0,5px,15px); }
+}
+
+footer {
+
+
+}
+
+
+.grid {
+  @include susy-grid-background;
+}
+
+@media (max-width: 980px) {
+  body {
+    font-size: 16px;
+  }
+  #main {
+    width: 100%;
+    background-size: cover;
+    #bgimage {
+      width: 100%;
+      background-size: cover;
+    }
+  }
+  header {
+    nav {
+      //ul { clear: both; float: left; }
+    }
+  }
+}
+@media (max-width: 800px) {
+  .container { width: 100%; padding: 0px; }
+  header {
+    height: auto;
+    padding: 0;
+    img { width: 200px; margin-top: 10px; }
+  }
+}
+
+@media (max-width: 650px) {
+  body {
+    font-size: 14px;
+  }
+  #caption {
+    //top: 100px;
+    background: rgba(255,255,255,0.7);
+  }
+  .featurebox {
+    margin: 0;
+    width: 90%;
+    padding: 10px 5%;
+  }
+}
+@media (max-width: 480px) {
+  body {
+    font-size: 12px;
+  }
+}
