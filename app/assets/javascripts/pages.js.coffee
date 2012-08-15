@@ -26,6 +26,8 @@ jQuery ->
     $('ul.topnav li a.down').removeClass('down').addClass('up')
   )
 
+  $('#flash').delay(2000).fadeOut(700)
+
 
 
   #    $('ul.topnav li ul').slideUp()

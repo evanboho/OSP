@@ -30,7 +30,12 @@ html, body {
   @include container;
 }
 
+.small {
+  font-size: .6em;
+}
+
 a, a:visited, a:hover { text-decoration: none; letter-spacing: 0;}
+a, a:visited { color: $blue; }
 ul { list-style: none; margin: 0; padding: 0;}
 
 header, footer {
@@ -167,41 +172,82 @@ form { @include clearfix; }
   text-align: right;
   width: 95%;
   label {
-    line-height: 50px;
+    line-height: 45px;
+    font-variant: small-caps;
+    text-transform: lowercase;
+    font-weight: bold;
+  }
+  span.error {
+    position: absolute;
+    font-size: .7em;
+    padding: 5px;
+    @include border-radius;
+    margin-top: .85em;
+    border: 1px solid #aaa;
+    background: rgba(255,240,240,0.7);
+    color: $red;
+    //top: .1em;
   }
   div.age { width: 8em; float: right; }
   div.name { width: 16em; float: right; }
   div.email { clear: both; }
+  div.title { margin-top: 10px; }
   div.info, div.story {
     clear: both;
-    background: rgba(200,200,200,0.3);
+    background: rgba(200,200,200,0.4);
     float: right;
     @include border-radius;
     width: 25em;
     padding-right: 3em;
-    margin: 1em 0 2em 0;
+    margin: 0 0 2em 0;
   }
   div.story {
     width: 35em;
   }
-  div.submit { clear:both; }
+  div.submit {
+    clear:both;
+    .fine-print {
+      width: 60%;
+      margin-bottom: 10px;
+      text-align: left;
+      font-size: .6em;
+      float: left;
+      .red {
+        color: red;
+      }
+    }
+  }
   input {
     clear: both;
+    padding: 0 .2em;
     @include border-radius(4px);
     margin: 10px 10px;
     &#story_age { width: 3em; }
     &#story_name { width: 10em; }
     &#story_email { width: 18em; }
-    &#story_title { width: 18em; margin-right: 7.7em; }
+    &#story_title { width: 18em; margin-right: 7.6em; }
+    &[type="submit"] {
+      padding: 5px 15px;
+      color: #111;
+      text-transform: lowercase;
+      font-variant: small-caps;
+      letter-spacing: 2px;
+      font-weight: bold;
+      @include border-radius(10px);
+      @include single-box-shadow(#999, 2px, -5px, 10px, 0px, true);
+      &:hover { background: #bbb; }
+    }
   }
   textarea {
-      @include border-radius;
-      height: 10em;
-      margin: 10px 10px;
-      width: 25em;
-    }
-
+    font-size: 14px;
+    padding: 0 .2em;
+    @include border-radius;
+    height: 10em;
+    margin: 10px 10px;
+    width: 30.5em;
+  }
 }
+
 
 .featurebox {
   background: rgba(255,255,255,0.8);
@@ -216,11 +262,84 @@ form { @include clearfix; }
   }
   p {
     font-weight: 100;
+    letter-spacing: -1px;
+    word-spacing: 1px;
     line-height: 1.5em;
     margin-left: 5%;
   }
   img { width: 100%; @include single-box-shadow(#111,0,5px,15px); }
 }
+
+.story_body {
+  padding-top: 13em;
+  .featurebox {
+    //padding-top: 2em;
+    //min-height: 7em;
+    //padding-bottom: 2em;
+    .body {
+      min-height: 3em;
+      padding: 2em 0;
+    }
+    .date {
+      font-style: italic;
+      text-align: right;
+      font-size: .8em;
+    }
+  }
+}
+.index {
+  padding-top: 3em;
+  .featurebox {
+    padding-top: 2em;
+    padding-bottom: 2em;
+    ul {
+      //text-align: right;
+      list-style: disc;
+      margin-left: 15em;
+      padding: 3em;
+      @include border-radius;
+      @include single-box-shadow(#aaa);
+      background: rgba(255,255,255,0.8);
+      li {
+        padding-bottom: .5em;
+      }
+    }
+
+  }
+}
+
+#signed-in-user {
+  // visibility: hidden;
+  background: #ddd;
+  @include border-radius(0 0 7px 7px);
+  padding: 0 15px;
+  position: absolute;
+  left: 80%;
+  top: 0px;
+}
+#flash {
+  position: absolute;
+  top: -17px;
+  left: 10%;
+  font-size: .8em;
+  .notice {
+    @include border-radius(0 0 7px 7px);
+    padding: 6px 15px;
+    border: 1px solid $green;
+    border-top: none;
+    background: rgba(245,255,245,0.9);
+    color: $green;
+  }
+  .error {
+    @include border-radius(0 0 7px 7px);
+    padding: 6px 15px;
+    border: 1px solid $red;
+    border-top: none;
+    background: rgba(255,245,245,0.9);
+    color: $red;
+  }
+}
+
 .fsbanner {
   @extend .featurebox;
   padding: 0px;

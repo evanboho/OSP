@@ -1,0 +1,14 @@
+= content_for :title do
+  = @story.title
+
+= content_for :caption do
+  #caption
+    %h2
+      = @story.title
+
+= content_for :story_body do
+  .featurebox
+    .body
+      = @story.body
+    .date
+      = "Submitted #{time_ago_in_words(@story.created_at)} ago"

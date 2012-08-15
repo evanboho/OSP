@@ -7,13 +7,33 @@
       Share your story
 
 = content_for :middle do
-  = simple_form_for @story do |f|
-    %div.info
-      = f.input :age, :as => :string, :wrapper_html => { :class => 'age' }
-      = f.input :name, :wrapper_html => {:class => 'name' }
-      = f.input :email, :wrapper_html => { :class => 'email' }
-    %div.story
-      = f.input :title
-      = f.input :body, :label => "Story"
-    %div.submit
-      = f.submit 'Share Story'
+  .featurebox
+    = simple_form_for @story do |f|
+      %div
+        Personal Information
+      %div.small
+        Your name will not be displayed on the site.
+      %div.info
+        = f.input :age, :as => :string, :wrapper_html => { :class => 'age' }
+        = f.input :name, :wrapper_html => {:class => 'name' }
+        = f.input :email, :wrapper_html => { :class => 'email' }
+      %div{ :style => "clear:both;"} Your story
+      %div.story
+        = f.input :title, :wrapper_html => { :class => 'title'}, :required => false
+        = f.input :body, :required => false, :label => false
+      %div.submit
+        %span.fine-print
+          Please share your comments, questions, and responses with us.
+          %br
+          If you would like to submit a piece for possible publication, please do so.
+          %br
+          %span.red
+            By leaving your words here, you grant us permission to share them
+            with others.
+            %br
+            They may appear here or in other online or print formats,
+            in their entirety or in part.
+            %br
+            No names or identifying information will be
+            used.
+        = f.submit 'Share Story'

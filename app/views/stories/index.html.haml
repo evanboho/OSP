@@ -4,3 +4,11 @@
 = content_for :caption do
   #caption.index
     %h2 Read a story
+
+= content_for :middle do
+  .index
+    .featurebox
+      %ul
+        - @stories.each do |story|
+          %li
+            = link_to story.title, story
