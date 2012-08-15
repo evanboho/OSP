@@ -149,11 +149,18 @@ footer {
   }
 }
 #caption {
-  &.new, &.index {
+  &.new, &.index, &.show {
     left: 15px;
     background: darken($white, 5%);
     border: 1px solid #666;
-    @include opacity(.9);
+    @include opacity(.8);
+  }
+  &.show {
+    width: 30%;
+    text-align: center;
+    h2 {
+      font-variant: small-caps;
+    }
   }
 }
 
@@ -381,7 +388,7 @@ footer {
     img { width: 200px; margin-top: 10px; }
   }
   #caption {
-    &.new, &.index { left: 0; }
+    &.new, &.index, &.show { left: 0; }
     h2 { font-size: 1em; }
   }
 }
@@ -395,7 +402,7 @@ footer {
     background: rgba(255,255,255,0.7);
   }
   #caption {
-    &.new, &.index {
+    &.new, &.index, &.show {
       display: none;
     }
   }

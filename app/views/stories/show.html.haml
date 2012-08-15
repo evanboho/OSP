@@ -2,9 +2,9 @@
   = @story.title
 
 = content_for :caption do
-  #caption
+  #caption.show
     %h2
-      = @story.title
+      = @story.title.titleize
 
 = content_for :story_body do
   .featurebox
