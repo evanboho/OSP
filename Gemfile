@@ -24,8 +24,6 @@ group :assets do
 
 end
 
-#gem 'haml'
-#gem 'haml-rails'
 gem 'html5-rails'
 
 
