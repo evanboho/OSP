@@ -1,17 +1,17 @@
 %header
   %nav
     #logo
-      = link_to image_tag "osp-logo.png"
+      = link_to image_tag("osp-logo.png"), root_path
     %ul.topnav
       %li
-        %a.up Stories
+        %a.drop Stories
         %ul.subnav
           %li
-            = link_to "Write a story", "#"
+            = link_to "Share your story", new_story_path
           %li
-            %a{:href => '#'} 1st submission
+            = link_to "Read a story", stories_path
           %li
-            %a 2nd submission
+            %a{:href => '#'} 2nd submission
       %li
         = link_to "Resources", "#"
       %li

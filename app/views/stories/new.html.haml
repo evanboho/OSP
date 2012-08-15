@@ -1,0 +1,13 @@
+= content_for :title do
+  Share your story
+
+= content_for :caption do
+  #caption
+    %h2
+      Share your story
+
+= content_for :middle do
+  = simple_form_for @story do |f|
+    = f.input :title
+    = f.input :body, :label => "Story"
+    = f.submit

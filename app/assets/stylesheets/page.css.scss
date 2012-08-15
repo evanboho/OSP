@@ -34,7 +34,6 @@ html, body {
 a, a:visited, a:hover { text-decoration: none; }
 ul { list-style: none; margin: 0; padding: 0;}
 
-
 header, footer {
   @include span-columns(12);
   height: 50px;
@@ -42,6 +41,7 @@ header, footer {
   margin-right: auto;
   padding: 30px 0 0 0;
   nav {
+    z-index: 100;
     @include border-radius;
     @include background-image(linear-gradient(#3f3f3f, #000));
     height: 50px;
@@ -61,16 +61,17 @@ header, footer {
       position: relative;
       li {
         position: relative;
+        &:last-child { padding-right: 1em; }
         a, a:visited {
           padding: 0 1em;
           color: white;
           cursor: pointer;
           &:hover { color: $nav-link-hover-color; }
-          &.up, &.down {
+          &.drop {
             padding-right: 20px;
             //margin-right: 15px;
             background: image-url('down-arrow.png') no-repeat;
-            background-position: 5em .3em; //70px 3px;
+            background-position: 5em .25em; //70px 3px;
           }
         }
       }
@@ -79,8 +80,9 @@ header, footer {
 }
 
 ul.topnav li ul.subnav {
+  z-index: 100;
   position: absolute;
-  left: 0; top: 34px;
+  left: 0; top: 33px;
   display: none;
   width: auto;
   min-width: 170px;
@@ -93,6 +95,9 @@ ul.topnav li ul.subnav {
     display: block;
     line-height: 40px;
     &:not(:last-child) { border-bottom: 1px solid #aaa; }
+    &:hover { background: #ccc; }
+    &:last-child {
+      @include border-radius(0px 0px 7px 7px); }
     a {
       display: block;
       padding: 0 15px;
@@ -129,6 +134,7 @@ footer {
   padding: 10px 4%;
   background: rgba(255,255,255,0.3);
   @include border-radius;
+  z-index: 10;
   //@include opacity(.9);
   h2 {
     color: $black;
@@ -139,9 +145,32 @@ footer {
   }
 }
 
-.blank-middle {
-  height: 16em;
+.middle {
+  min-height: 16em;
   z-index: -100;
+  .featurebox {
+    opacity: .95;
+    @include clearfix;
+  }
+}
+
+.simple_form {
+  text-align: right;
+  width: 90%;
+  @include clearfix;
+  label {
+    line-height: 100px;
+    //float: left;
+  }
+  input, textarea {
+    //float: left;
+    margin: 20px 10px;
+    width: 40%;
+    #story_title {
+      //width: 100px;
+      //margin: 20px 0;
+    }
+  }
 }
 
 .featurebox {
@@ -161,6 +190,10 @@ footer {
     margin-left: 5%;
   }
   img { width: 100%; @include single-box-shadow(#111,0,5px,15px); }
+}
+.fsbanner {
+  @extend .featurebox;
+  padding: 0px;
 }
 
 footer {

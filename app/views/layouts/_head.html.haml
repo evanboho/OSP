@@ -1,4 +1,8 @@
-%title Our Story Project
+%title
+  - if content_for?(:title)
+    = yield :title
+  - else
+    Our Story Project
 = stylesheet_link_tag "application", :media => "all"
 = javascript_include_tag "application"
 %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }/

@@ -7,16 +7,19 @@
       #bgimage
         .container
           = render 'layouts/header'
-
-          #caption
-            = yield :caption if content_for?(:caption)
+          - if content_for?(:caption)
+            = yield :caption
         .container
-          .blank-middle
-          .featurebox
-            = yield :featurebox if content_for?(:featurebox)
-          .featurebox
+          .middle
+            - if content_for?(:middle)
+              .featurebox
+                = yield :middle
+          - if content_for?(:featurebox)
+            .featurebox
+              = yield :featurebox
+          .fsbanner
             = image_tag "fssbanner.png"
-          -# yield
+          = yield
 
 
         .container
