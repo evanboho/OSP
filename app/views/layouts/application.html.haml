@@ -1,28 +1,12 @@
 !!! 5
-%html
+- html_tag do
   %head
-    %title Our Story Project
-    = stylesheet_link_tag "application", :media => "all"
-    = javascript_include_tag "application"
-    %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }/
-    = csrf_meta_tags
+    = render 'layouts/head'
   %body
     #main
       #bgimage
         .container
-          %header
-            %nav
-              #logo
-                = link_to image_tag "osp-logo.png"
-              %ul
-                %li
-                  = link_to "Stories of Healing", "#"
-                %li
-                  = link_to "Resources", "#"
-                %li
-                  = link_to "Contact Us", "#"
-                %li
-                  = link_to "Search", "#"
+          = render 'layouts/header'
 
           #caption
             = yield :caption if content_for?(:caption)
@@ -36,16 +20,4 @@
 
 
         .container
-          %footer
-            %nav
-              %ul
-                %li
-                  %span
-                    Copyright © 2012 -
-                    = link_to "Family Shelter Service", "http://familyshelterservice.org"
-                %li
-                  %span
-                    605 East Roosevelt Road, Wheaton, IL
-                %li
-                  %span
-                    (630) 221-8290
+          = render 'layouts/footer'
