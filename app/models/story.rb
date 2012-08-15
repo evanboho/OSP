@@ -1,3 +1,5 @@
 class Story < ActiveRecord::Base
-  attr_accessible :age, :approved_at, :body, :gender, :name, :title
+  attr_accessible :age, :approved_at, :body, :gender, :name, :title, :email
+
+
 end

@@ -2,12 +2,18 @@
   Share your story
 
 = content_for :caption do
-  #caption
+  #caption.new
     %h2
       Share your story
 
 = content_for :middle do
   = simple_form_for @story do |f|
-    = f.input :title
-    = f.input :body, :label => "Story"
-    = f.submit
+    %div.info
+      = f.input :age, :as => :string, :wrapper_html => { :class => 'age' }
+      = f.input :name, :wrapper_html => {:class => 'name' }
+      = f.input :email, :wrapper_html => { :class => 'email' }
+    %div.story
+      = f.input :title
+      = f.input :body, :label => "Story"
+    %div.submit
+      = f.submit 'Share Story'

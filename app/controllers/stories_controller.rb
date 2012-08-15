@@ -12,7 +12,7 @@ class StoriesController < ApplicationController
 
   def create
     @story = Story.create(params[:story])
-
+    render 'index'
   end
 
 end

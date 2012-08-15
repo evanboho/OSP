@@ -6,8 +6,7 @@ html, body {
   height: 100%;
   background-color: #f0f0f0;
   font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Geneva, sans-serif;
-  font-size: 18px;
-  line-height: 18px;
+  font-size: 17px;
   margin: 0;
   width: 100%;
   // height: image-height("timthumb.jpg"); // @extend .lucida
@@ -31,7 +30,7 @@ html, body {
   @include container;
 }
 
-a, a:visited, a:hover { text-decoration: none; }
+a, a:visited, a:hover { text-decoration: none; letter-spacing: 0;}
 ul { list-style: none; margin: 0; padding: 0;}
 
 header, footer {
@@ -144,6 +143,14 @@ footer {
     div { color: lighten($black, 10%); }
   }
 }
+#caption {
+  &.new, &.index {
+    left: 15px;
+    background: darken($white, 5%);
+    border: 1px solid #666;
+    @include opacity(.9);
+  }
+}
 
 .middle {
   min-height: 16em;
@@ -154,30 +161,53 @@ footer {
   }
 }
 
+form { @include clearfix; }
+
 .simple_form {
   text-align: right;
-  width: 90%;
-  @include clearfix;
+  width: 95%;
   label {
-    line-height: 100px;
-    //float: left;
+    line-height: 50px;
   }
-  input, textarea {
-    //float: left;
-    margin: 20px 10px;
-    width: 40%;
-    #story_title {
-      //width: 100px;
-      //margin: 20px 0;
+  div.age { width: 8em; float: right; }
+  div.name { width: 16em; float: right; }
+  div.email { clear: both; }
+  div.info, div.story {
+    clear: both;
+    background: rgba(200,200,200,0.3);
+    float: right;
+    @include border-radius;
+    width: 25em;
+    padding-right: 3em;
+    margin: 1em 0 2em 0;
+  }
+  div.story {
+    width: 35em;
+  }
+  div.submit { clear:both; }
+  input {
+    clear: both;
+    @include border-radius(4px);
+    margin: 10px 10px;
+    &#story_age { width: 3em; }
+    &#story_name { width: 10em; }
+    &#story_email { width: 18em; }
+    &#story_title { width: 18em; margin-right: 7.7em; }
+  }
+  textarea {
+      @include border-radius;
+      height: 10em;
+      margin: 10px 10px;
+      width: 25em;
     }
-  }
+
 }
 
 .featurebox {
   background: rgba(255,255,255,0.8);
-  padding: 10px 2%;
+  padding: 10px 5%;
   @include border-radius;
-  width: 90%;
+  width: 80%;
   margin: 0 auto 2em auto;
   border: 1px solid $grey;
   @include single-box-shadow(#666,0,0,10px);
@@ -186,7 +216,7 @@ footer {
   }
   p {
     font-weight: 100;
-    line-height: 1.2em;
+    line-height: 1.5em;
     margin-left: 5%;
   }
   img { width: 100%; @include single-box-shadow(#111,0,5px,15px); }
@@ -231,6 +261,10 @@ footer {
     padding: 0;
     img { width: 200px; margin-top: 10px; }
   }
+  #caption {
+    &.new, &.index { left: 0; }
+    h2 { font-size: 1em; }
+  }
 }
 
 @media (max-width: 650px) {
@@ -240,6 +274,11 @@ footer {
   #caption {
     //top: 100px;
     background: rgba(255,255,255,0.7);
+  }
+  #caption {
+    &.new, &.index {
+      display: none;
+    }
   }
   .featurebox {
     margin: 0;
