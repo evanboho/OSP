@@ -1,5 +1,11 @@
 OSP::Application.routes.draw do
 
+
+  devise_for :admins do
+    match 'admin' => 'devise/sessions#new'
+    match 'sign_out' => 'devise/sessions#destroy'
+  end
+
   root :to => 'pages#index'
 
   get "pages/index"
@@ -11,6 +17,14 @@ OSP::Application.routes.draw do
   get "pages/search"
 
   resources :stories
+  match "random_story" => "stories#random"
+
+  namespace :admin do
+    get "unapproved_stories" => "stories#unapproved"
+    get "approved_stories" => "stories#approved"
+    get "approve_story" => "stories#approve"
+    get "disapprove_story" => "stories#disapprove"
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

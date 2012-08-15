@@ -1,18 +1,29 @@
 %header
   %nav
-    -# if user_signed_in?
+    - if current_user?
       %span#signed-in-user
-        = "Signed in as #{current_user.name}"
+        Logged in as
+        = link_to current_user.email, current_user
+        |
+        = link_to "log out", sign_out_path
     #logo
       = link_to image_tag("osp-logo.png"), root_path
     %ul.topnav
       %li
         %a.drop Stories
         %ul.subnav
-          %li
-            = link_to "Share your story", new_story_path
-          %li
-            = link_to "Read a story", stories_path
+          - if !current_user?
+            %li
+              = link_to "Share your story", new_story_path
+            %li
+              = link_to "Read a story", random_story_path
+            %li
+              = link_to "See all stories", stories_path
+          - else
+            %li
+              = link_to "Unapproved", admin_unapproved_stories_path
+            %li
+              = link_to "Approved", admin_approved_stories_path
       %li
         = link_to "Resources", "#"
       %li

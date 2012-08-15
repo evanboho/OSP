@@ -83,6 +83,14 @@ header, footer {
   }
 }
 
+
+button {
+  //@include border-radius(10px);
+  //border-width: 1px;
+  //padding: 5px;
+  //@include background-image(linear-gradient(#f0f0f0, #ddd));
+ // @include single-box-shadow(#bbb, 0px, -5px, 3px, 0px, true);
+}
 ul.topnav li ul.subnav {
   z-index: 100;
   position: absolute;
@@ -90,7 +98,7 @@ ul.topnav li ul.subnav {
   display: none;
   width: auto;
   min-width: 170px;
-  @include opacity(.9);
+  //@include opacity(.9);
   @include background-image(linear-gradient(#aaa, #fff));
   @include single-box-shadow(#222, 0, 0, 25px);
   @include border-radius(0px 0px 7px 7px);
@@ -153,7 +161,7 @@ footer {
     left: 15px;
     background: darken($white, 5%);
     border: 1px solid #666;
-    @include opacity(.8);
+    @include opacity(.95);
   }
   &.show {
     width: 30%;
@@ -195,8 +203,8 @@ form { @include clearfix; }
     color: $red;
     //top: .1em;
   }
-  div.age { width: 8em; float: right; }
-  div.name { width: 16em; float: right; }
+  div.age { width: 6em; float: left; }
+  div.name { width: 17em; float: left; }
   div.email { clear: both; }
   div.title { margin-top: 10px; }
   div.info, div.story {
@@ -229,10 +237,10 @@ form { @include clearfix; }
     padding: 0 .2em;
     @include border-radius(4px);
     margin: 10px 10px;
-    &#story_age { width: 3em; }
+    &#story_age { width: 2em; }
     &#story_name { width: 10em; }
-    &#story_email { width: 18em; }
-    &#story_title { width: 18em; margin-right: 7.6em; }
+    &#story_email { width: 16em; margin-right: 2.5em; }
+    &#story_title { width: 16em; margin-right: 9.6em; }
     &[type="submit"] {
       padding: 5px 15px;
       color: #111;
@@ -257,7 +265,7 @@ form { @include clearfix; }
 
 
 .featurebox {
-  background: rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.95);
   padding: 10px 5%;
   @include border-radius;
   width: 80%;
@@ -316,13 +324,17 @@ form { @include clearfix; }
 }
 
 #signed-in-user {
-  // visibility: hidden;
-  background: #ddd;
+  font-size: .7em;
+  width: auto;
+  background: #f0f0f0;
   @include border-radius(0 0 7px 7px);
-  padding: 0 15px;
+  padding: 3px 15px;
+  border: 1px solid #666;
+  border-top: none;
   position: absolute;
-  left: 80%;
+  left: 60%;
   top: 0px;
+  @include opacity(.9);
 }
 #flash {
   position: absolute;

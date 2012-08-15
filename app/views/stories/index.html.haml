@@ -3,7 +3,9 @@
 
 = content_for :caption do
   #caption.index
-    %h2 Read a story
+    %h2
+      = "Our stories: #{params[:action]}" if current_user?
+      = "Our stories" if !current_user?
 
 = content_for :middle do
   .index

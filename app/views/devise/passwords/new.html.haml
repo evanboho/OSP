@@ -1,0 +1,15 @@
+= content_for :title do
+  Password Reset
+
+= content_for :middle do
+  .featurebox
+    %h2 Forgot your password?
+    = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+      = f.error_notification
+      %div.inputs
+        = f.input :email, :required => false
+      %div.actions
+        = f.button :submit, "Send me instructions to reset my password"
+
+= content_for :featurebox do
+  = render :partial => "devise/shared/links"

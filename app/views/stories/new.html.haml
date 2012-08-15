@@ -12,10 +12,10 @@
       %div
         Personal Information
       %div.small
-        Your name will not be displayed on the site.
+        Your information will not be displayed on the site.
       %div.info
-        = f.input :age, :as => :string, :wrapper_html => { :class => 'age' }
         = f.input :name, :wrapper_html => {:class => 'name' }
+        = f.input :age, :as => :string, :wrapper_html => { :class => 'age' }
         = f.input :email, :wrapper_html => { :class => 'email' }
       %div{ :style => "clear:both;"} Your story
       %div.story

@@ -10,5 +10,15 @@
   .featurebox
     .body
       = @story.body
+    - if current_user?
+      .admin-controls
+        - if @story.approved?
+          %button
+            = link_to "disapprove", admin_disapprove_story_path(:id => @story.id)
+        - else
+          %button
+            = link_to "approve", admin_approve_story_path(:id => @story.id)
+        %button
+          = link_to "delete", @story, method: :delete, :confirm => "Are you sure?"
     .date
       = "Submitted #{time_ago_in_words(@story.created_at)} ago"
