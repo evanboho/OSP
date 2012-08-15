@@ -8,32 +8,4 @@
 
 = content_for :middle do
   .featurebox
-    = simple_form_for @story do |f|
-      %div
-        Personal Information
-      %div.small
-        Your information will not be displayed on the site.
-      %div.info
-        = f.input :name, :wrapper_html => {:class => 'name' }
-        = f.input :age, :as => :string, :wrapper_html => { :class => 'age' }
-        = f.input :email, :wrapper_html => { :class => 'email' }
-      %div{ :style => "clear:both;"} Your story
-      %div.story
-        = f.input :title, :wrapper_html => { :class => 'title'}, :required => false
-        = f.input :body, :required => false, :label => false
-      %div.submit
-        %span.fine-print
-          Please share your comments, questions, and responses with us.
-          %br
-          If you would like to submit a piece for possible publication, please do so.
-          %br
-          %span.red
-            By leaving your words here, you grant us permission to share them
-            with others.
-            %br
-            They may appear here or in other online or print formats,
-            in their entirety or in part.
-            %br
-            No names or identifying information will be
-            used.
-        = f.submit 'Share Story'
+    = render 'fields'

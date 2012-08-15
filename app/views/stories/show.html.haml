@@ -12,13 +12,19 @@
       = @story.body
     - if current_user?
       .admin-controls
+        %button
+          = link_to "edit", edit_admin_story_path(@story)
         - if @story.approved?
           %button
-            = link_to "disapprove", admin_disapprove_story_path(:id => @story.id)
+            = link_to "unapprove", admin_disapprove_story_path(:id => @story.id)
         - else
           %button
             = link_to "approve", admin_approve_story_path(:id => @story.id)
         %button
-          = link_to "delete", @story, method: :delete, :confirm => "Are you sure?"
+          = link_to "delete", admin_story_path(@story), method: :delete, :confirm => "Are you sure?"
+    - else
+      .left
+        %button
+          = link_to "Read another story", random_story_path
     .date
       = "Submitted #{time_ago_in_words(@story.created_at)} ago"

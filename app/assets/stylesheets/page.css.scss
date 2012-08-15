@@ -15,8 +15,7 @@ html, body {
 #main {
   background: transparent;
   width: image-width("timthumb.jpg");
-  //height: 100%;
-  margin: 0 auto;
+  margin: 0 1em;
   @include border-radius;
   @include single-box-shadow(#111,0,0,25px);
   #bgimage {
@@ -144,7 +143,7 @@ footer {
   position: absolute;
   top: 9.5em;
   padding: 10px 4%;
-  background: rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.6);
   @include border-radius;
   z-index: 10;
   //@include opacity(.9);
@@ -197,15 +196,18 @@ form { @include clearfix; }
     font-size: .7em;
     padding: 5px;
     @include border-radius;
-    margin-top: .85em;
+    margin-top: .7em;
     border: 1px solid #aaa;
     background: rgba(255,240,240,0.7);
     color: $red;
-    //top: .1em;
   }
   div.age { width: 6em; float: left; }
-  div.name { width: 17em; float: left; }
-  div.email { clear: both; }
+  div.name { position: relative; width: 17em; float: left;
+    span.error { left: -6em; }
+  }
+  div.email { z-index: 100; clear: both; position: relative;
+    span.error { left: -6em; z-index: 100; }
+  }
   div.title { margin-top: 10px; }
   div.info, div.story {
     clear: both;
@@ -282,7 +284,10 @@ form { @include clearfix; }
     line-height: 1.5em;
     margin-left: 5%;
   }
-  img { width: 100%; @include single-box-shadow(#111,0,5px,15px); }
+  img {
+    width: 100%;
+    @include border-radius;
+  }
 }
 
 .story_body {
@@ -380,6 +385,7 @@ footer {
   }
   #main {
     width: 100%;
+    margin: 0;
     background-size: cover;
     #bgimage {
       width: 100%;

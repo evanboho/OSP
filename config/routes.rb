@@ -24,6 +24,7 @@ OSP::Application.routes.draw do
     get "approved_stories" => "stories#approved"
     get "approve_story" => "stories#approve"
     get "disapprove_story" => "stories#disapprove"
+    resources :stories, :only => [:destroy, :edit, :update]
   end
 
   # The priority is based upon order of creation:
