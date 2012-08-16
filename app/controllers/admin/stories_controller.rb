@@ -25,8 +25,13 @@ class Admin::StoriesController < StoriesController
 
   def approve
     @story = Story.find(params[:id])
-    @story.approve
-    redirect_to story_path(@story)
+    if @story.approve
+      flash[:notice] = "Story approved"
+      redirect_to story_path(@story)
+    else
+      flash[:error] = "Something went wrong"
+      redirect_to story_path(@story)
+    end
   end
 
   def disapprove
@@ -36,6 +41,7 @@ class Admin::StoriesController < StoriesController
       redirect_to story_path(@story)
     else
       flash[:error] = "Story not disapproved."
+      redirect_to story_path(@story)
     end
   end
 

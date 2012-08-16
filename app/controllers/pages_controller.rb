@@ -1,7 +1,6 @@
 class PagesController < ApplicationController
   def index
     @stories = Story.order('created_at').limit(5)
-
   end
 
   def resources
@@ -10,6 +9,6 @@ class PagesController < ApplicationController
   def contact_us
   end
 
-  def search
+  def about
   end
 end

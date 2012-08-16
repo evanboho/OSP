@@ -12,9 +12,9 @@ OSP::Application.routes.draw do
 
   get "pages/resources"
 
-  get "pages/contact_us"
+  get "pages/contact"
 
-  get "pages/search"
+  get "pages/about"
 
   resources :stories
   match "random_story" => "stories#random"
