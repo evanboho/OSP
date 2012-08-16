@@ -20,9 +20,6 @@ class GeneralMailerController < ApplicationController
       flash[:error] = "You must enter an email address."
       render 'contact'
     end
-    #
-    # flash[:notice] = "Thanks for contacting us!"
-    #redirect_to root_path, :notice => "Thanks for contacting us!"
   end
 
 end
