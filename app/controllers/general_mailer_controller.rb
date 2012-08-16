@@ -10,7 +10,7 @@ class GeneralMailerController < ApplicationController
         @message = { :email => params[:email],
                      :subject => params[:subject],
                      :body => params[:body] }
-        GeneralMailer.contact_us(@message)
+        GeneralMailer.contact_us(@message).deliver
         redirect_to root_path, :notice => "Thanks for contacting us!"
       else
         flash[:error] = "Message too short."

@@ -4,7 +4,9 @@ class GeneralMailer < ActionMailer::Base
 
   def contact_us(message)
     @message = message
-    mail(:subject => "OSP contact: #{message[:subject]}")
+    mail(:email => message[:email],
+         :subject => "OSP contact: #{message[:subject]}",
+         :body => message[:body])
   end
 
 
