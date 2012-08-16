@@ -7,17 +7,16 @@ OSP::Application.routes.draw do
   end
 
   root :to => 'pages#index'
-
   get "pages/index"
-
   get "pages/resources"
-
-  get "pages/contact"
-
+  # get "pages/contact"
   get "pages/about"
 
   resources :stories
   match "random_story" => "stories#random"
+
+  get 'contact' => "general_mailer#contact"
+  post 'contact' => "general_mailer#send_contact_us"
 
   namespace :admin do
     get "unapproved_stories" => "stories#unapproved"

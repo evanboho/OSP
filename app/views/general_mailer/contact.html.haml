@@ -1,0 +1,20 @@
+= content_for :title do
+  Contact Us
+
+= content_for :caption do
+  #caption.new
+    %h2
+      Contact Us
+
+= content_for :middle do
+  .featurebox
+    = form_tag( {}, :class => "simple_form") do
+      %div.info
+        = label_tag :email
+        = text_field_tag :email
+      %div.story
+        = label_tag :subject
+        = text_field_tag :subject
+        = text_area_tag :body
+      %div.submit
+        = submit_tag "Send"
