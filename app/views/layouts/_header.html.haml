@@ -21,9 +21,9 @@
               = link_to "See all stories", stories_path
           - else
             %li
-              = link_to "Unapproved", admin_unapproved_stories_path
+              = link_to "Unapproved (#{Story.unapproved.count})", admin_unapproved_stories_path
             %li
-              = link_to "Approved", admin_approved_stories_path
+              = link_to "Approved (#{Story.approved.count})", admin_approved_stories_path
       %li
         = link_to "Resources", "#"
       %li
@@ -33,4 +33,4 @@
   #flash
     - if flash
       - flash.each do |name, msg|
-        = content_tag :p, msg, :class => name if msg.is_a?(String)
+        = content_tag :p, msg, :class => "name", :id => "flash_#{name}" if msg.is_a?(String)
