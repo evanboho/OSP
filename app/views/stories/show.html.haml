@@ -9,7 +9,9 @@
 = content_for :story_body do
   .featurebox
     .body
-      = @story.body
+      - line_breaks(@story.body).each do |line|
+        %p
+          = line
     - if current_user?
       .admin-controls
         %button
