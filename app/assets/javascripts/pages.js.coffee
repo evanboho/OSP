@@ -22,7 +22,7 @@ jQuery ->
   )
 
   $('ul.subnav').live('mouseleave', ->
-    $('ul.topnav li ul').delay(500).slideUp()
+    $('ul.topnav li ul').delay(1000).slideUp()
     $('ul.topnav li a.down').removeClass('down').addClass('up')
   )
 
