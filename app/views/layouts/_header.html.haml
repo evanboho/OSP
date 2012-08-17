@@ -29,7 +29,8 @@
       %li
         = link_to "Resources", pages_resources_path
       %li
-        = link_to "Contact Us", contact_path
+        = link_to "Contact Us", contact_path if !current_user
+        = link_to "Settings", root_path if current_user
       -#%li
         -#= link_to "About", pages_about_path
   #flash
