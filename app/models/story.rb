@@ -9,17 +9,25 @@ class Story < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, :allow_blank => true, format: { with: VALID_EMAIL_REGEX }
 
+  belongs_to :admin
+
   scope :unapproved, where("approved_at IS ?", nil)
   scope :approved, where("approved_at IS NOT ?", nil)
 
   before_save :titleize_title
 
-  def approve
+  def approve(approver_id)
     self.update_attribute(:approved_at, Time.now)
+    self.update_attribute(:admin_id, approver_id)
   end
 
   def disapprove
     self.update_attribute(:approved_at, nil)
+    self.update_attribute(:admin_id, nil)
+  end
+
+  def approver
+    self.admin.email.split('@').first
   end
 
   def approved?

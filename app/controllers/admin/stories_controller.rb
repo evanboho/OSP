@@ -25,7 +25,7 @@ class Admin::StoriesController < StoriesController
 
   def approve
     @story = Story.find(params[:id])
-    if @story.approve
+    if @story.approve(current_user.id)
       flash[:notice] = "Story approved"
       redirect_to story_path(@story)
     else

@@ -18,10 +18,12 @@
         - if @story.approved?
           = link_to "unapprove", admin_disapprove_story_path(:id => @story.id), :class => 'button'
         - else
-          = link_to " approve", admin_approve_story_path(:id => @story.id), :class => 'buttton'
+          = link_to " approve", admin_approve_story_path(:id => @story.id), :class => 'button'
         = link_to "delete", admin_story_path(@story), method: :delete, :confirm => "Are you sure?", :class => 'button'
     - else
       .left
         = link_to "Read another story", random_story_path, :class => 'button'
     .date
       = "Submitted #{time_ago_in_words(@story.created_at)} ago"
+      %br
+      = "Approved by #{approver}" if current_user? && @story.admin.present?

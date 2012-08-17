@@ -5,4 +5,11 @@ module StoriesHelper
     return [] if graphs.nil?
   end
 
+
+  def approver
+    if @story.present?
+      @story.approver
+    end
+  end
+
 end
