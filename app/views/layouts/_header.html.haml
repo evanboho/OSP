@@ -40,5 +40,5 @@
       - flash.each do |name, msg|
         = content_tag :p, msg, :class => name, :id => "flash_#{name}" if msg.is_a?(String)
   #buy_journal_button
-    .button
+    %div
       = link_to "Buy the journal", "https://www.createspace.com/3861795", :target => '_blank'

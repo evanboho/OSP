@@ -33,6 +33,21 @@ html, body {
   font-size: .6em;
 }
 
+.button {
+  border: 1px solid #999;
+  margin: 0 3px;
+  @include opacity(.8);
+  padding: 5px 5px 5px 5px;
+  @include border-radius(10px);
+  background: rgba(200,200,200,0.5);
+  @include single-box-shadow(#aaa,0,-10px,10px,0,true);
+  text-align: center;
+  a {
+    color: $blue;
+    &:hover { color: darken($blue, 20%); }
+  }
+}
+
 #buy_journal_button {
   display: inline;
   margin-right: 3em;
@@ -47,7 +62,7 @@ html, body {
   float: right;
   background: rgba(100,100,255,0.1);
   a { color: darken($white, 10%); }
-  a:hover { color: darken($white, 50%); }
+  a:hover { color: darken($white, 30%); }
 }
 
 a, a:visited, a:hover { text-decoration: none; letter-spacing: 0;}
