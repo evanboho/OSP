@@ -14,19 +14,19 @@
           = line
     - if current_user?
       .admin-controls
-        %button
+        %span.button
           = link_to "edit", edit_admin_story_path(@story)
         - if @story.approved?
-          %button
+          %span.button
             = link_to "unapprove", admin_disapprove_story_path(:id => @story.id)
         - else
-          %button
+          %span.buton
             = link_to "approve", admin_approve_story_path(:id => @story.id)
-        %button
+        %span.button
           = link_to "delete", admin_story_path(@story), method: :delete, :confirm => "Are you sure?"
     - else
       .left
-        %button
+        %span.button
           = link_to "Read another story", random_story_path
     .date
       = "Submitted #{time_ago_in_words(@story.created_at)} ago"
