@@ -33,18 +33,22 @@ html, body {
   font-size: .6em;
 }
 
-.button {
+button, .button {
   border: 1px solid #999;
+  border-bottom: 2px solid #666;
+  border-right: 1px solid #666;
   margin: 0 3px;
   @include opacity(.8);
-  padding: 5px 5px 5px 5px;
+  padding: 4px 10px;
   @include border-radius(10px);
   background: rgba(200,200,200,0.5);
-  @include single-box-shadow(#aaa,0,-10px,10px,0,true);
+  @include single-box-shadow(#999,0,-2px,5px,0,true);
+  @include background-image(linear-gradient(#f0f0f0, #ddd));
   text-align: center;
+  &:hover { @include background-image(linear-gradient(#fff, #eee)); }
   a {
     color: $blue;
-    &:hover { color: darken($blue, 20%); }
+    &:hover {color: darken($blue, 20%); }
   }
 }
 
