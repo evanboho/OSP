@@ -33,6 +33,23 @@ html, body {
   font-size: .6em;
 }
 
+#buy_journal_button {
+  display: inline;
+  margin-right: 3em;
+  padding: 0px 15px 7px 15px;
+  font-weight: bold;
+  text-transform: lowercase;
+  font-variant: small-caps;
+  @include single-box-shadow(#000066, 0px, -5px, 10px, 0, true);
+  border: 1px solid #666;
+  border-top: none;
+  @include border-radius(0 0 7px 7px);
+  float: right;
+  background: rgba(100,100,255,0.1);
+  a { color: darken($white, 10%); }
+  a:hover { color: darken($white, 50%); }
+}
+
 a, a:visited, a:hover { text-decoration: none; letter-spacing: 0;}
 a, a:visited { color: $blue; }
 ul { list-style: none; margin: 0; padding: 0;}
@@ -175,7 +192,7 @@ footer {
   min-height: 16em;
   z-index: -100;
   .featurebox {
-    opacity: .95;
+    @include opacity(.95);
     @include clearfix;
   }
 }
