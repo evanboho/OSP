@@ -20,7 +20,7 @@
           %span.button
             = link_to "unapprove", admin_disapprove_story_path(:id => @story.id)
         - else
-          %span.buton
+          %span.button
             = link_to "approve", admin_approve_story_path(:id => @story.id)
         %span.button
           = link_to "delete", admin_story_path(@story), method: :delete, :confirm => "Are you sure?"
