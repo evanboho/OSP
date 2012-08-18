@@ -23,6 +23,9 @@ OSP::Application.routes.draw do
     get "approved_stories" => "stories#approved"
     get "approve_story" => "stories#approve"
     get "disapprove_story" => "stories#disapprove"
+    get "pages/resources"
+    post "pages/resources" => "pages#update_resources"
+    resources :settings
     resources :stories, :only => [:destroy, :edit, :update]
   end
 

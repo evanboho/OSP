@@ -27,15 +27,14 @@
             %li
               = link_to "New Story", new_story_path
       %li
-        = link_to "Resources", pages_resources_path
+        = link_to "Resources", pages_resources_path if !current_user
+        = link_to "Resources", admin_pages_resources_path if current_user
       %li
         = link_to "Contact Us", contact_path if !current_user
         = link_to "Settings", root_path if current_user
       -#%li
         -#= link_to "About", pages_about_path
   #flash
-    -# if flash
-      -# %p.notice flash
     - if flash
       - flash.each do |name, msg|
         = content_tag :p, msg, :class => name, :id => "flash_#{name}" if msg.is_a?(String)

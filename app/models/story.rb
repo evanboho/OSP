@@ -27,7 +27,7 @@ class Story < ActiveRecord::Base
   end
 
   def approver
-    self.admin.email.split('@').first
+    self.admin
   end
 
   def approved?
