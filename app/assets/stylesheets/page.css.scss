@@ -181,6 +181,22 @@ footer {
     }
   }
   }
+
+ul.resources {
+  width: 75%;
+  margin: 0 auto;
+  li {
+    padding: 25px;
+    border: 1px solid #ccc;
+    @include border-radius;
+  }
+}
+
+.tagline {
+  margin: 0 0 0 5em;
+  color: #777;
+
+}
 #caption {
   position: absolute;
   top: 9.5em;

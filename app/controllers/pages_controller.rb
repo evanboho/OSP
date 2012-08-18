@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   end
 
   def resources
+    @settings = Setting.resources
   end
 
   def contact_us

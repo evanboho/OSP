@@ -8,20 +8,10 @@
 
 = content_for :featurebox do
   %br
-  %ul
-    %li
-      = link_to "http://www.voicesandfaces.org/", "http://www.voicesandfaces.org/"
-      %br
-      %br
-    %li
-      = link_to "http://www.thehotline.org/", "http://www.thehotline.org/"
-      %br
-      %br
-    %li
-      = link_to "http://www.shewrites.com/profiles/blogs/i-will-survive-domestic", "http://www.shewrites.com/profiles/blogs/i-will-survive-domestic"
-      %br
-      %br
-    %li
-      = link_to "http://loveisrespect.org", "http://loveisrespect.org"
-      %br
-      %br
+  %ul.resources
+    - @settings.each do |setting|
+      %li
+        = link_to setting.name, setting.link
+        %br
+        .tagline
+          = setting.tagline
