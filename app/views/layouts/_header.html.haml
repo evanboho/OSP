@@ -21,17 +21,17 @@
               = link_to "See all stories", stories_path
           - else
             %li
-              = link_to "Unapproved (#{Story.unapproved.count})", admin_unapproved_stories_path
+              = link_to "Unapproved (#{Story.unapproved.count})", admin_unapproved_stories_path if Story.unapproved.count > 0
             %li
               = link_to "Approved (#{Story.approved.count})", admin_approved_stories_path
             %li
               = link_to "New Story", new_story_path
       %li
         = link_to "Resources", pages_resources_path if !current_user
-        = link_to "Resources", admin_pages_resources_path if current_user
+        = link_to "Resources", admin_settings_resources_path if current_user
       %li
         = link_to "Contact Us", contact_path if !current_user
-        = link_to "Settings", root_path if current_user
+        = link_to "Email Settings", admin_settings_settings_path if current_user
       -#%li
         -#= link_to "About", pages_about_path
   #flash

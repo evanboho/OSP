@@ -4,12 +4,17 @@ class PagesController < ApplicationController
   end
 
   def resources
-    @settings = Setting.resources
+    @settings = Setting.resources.order(:id)
   end
 
   def contact_us
   end
 
   def about
+
+  end
+
+  def setting
+
   end
 end
