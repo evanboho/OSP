@@ -2,6 +2,7 @@
 - html_tag do
   %head
     = render 'layouts/head'
+    = yield :mixpanel if content_for?(:mixpanel)
   %body
     #main
       #bgimage
@@ -26,3 +27,4 @@
 
         .container
           = render 'layouts/footer'
+          
