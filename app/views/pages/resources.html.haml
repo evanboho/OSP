@@ -11,7 +11,13 @@
   %ul.resources
     - @settings.each do |setting|
       %li
-        = link_to setting.name, setting.link
+        - if setting.name == "Family Shelter Service"
+          = link_to setting.name, setting.link, :class => "FSS-link"
+        - else
+          = link_to setting.name, setting.link
         %br
         .tagline
           = setting.tagline
+
+- content_for :mixpanel do
+  = mixpanel_track_links("a.FSS-link", "Visit FSS.org");

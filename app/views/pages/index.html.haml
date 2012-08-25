@@ -17,5 +17,7 @@
     = link_to "Read a Story", random_story_path, :class => "button"
 
 = content_for :mixpanel do
-  %script{ :type => "text/javascript" }
-    mixpanel.track("Land on Index");
+  = mixpanel_track("Land on Index");
+  = mixpanel_track_links('a#fssbanner', "Visit FSS.org");
+  -# script{ :type => "text/javascript" }
+    -# mixpanel.track("Land on Index");

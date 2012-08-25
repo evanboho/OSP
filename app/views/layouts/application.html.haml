@@ -2,9 +2,11 @@
 - html_tag do
   %head
     = render 'layouts/head'
-    = yield :mixpanel if content_for?(:mixpanel)
+    %script{:type => "text/javascript"}
+      = yield :mixpanel if content_for?(:mixpanel)
+      $('a#id').live("click", function(){alert("alert");})
   %body
-    #main
+    #main.clearfix
       #bgimage
         .container
           = render 'layouts/header'
@@ -21,7 +23,7 @@
             .featurebox
               = yield :featurebox
           .fsbanner
-            = link_to image_tag("fssbanner.png"), "http://familyshelterservice.org"
+            = link_to image_tag("fssbanner.png"), "http://familyshelterservice.org", :id => "fssbanner"
           = yield
 
 

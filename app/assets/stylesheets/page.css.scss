@@ -22,15 +22,16 @@ ul { list-style: none; margin: 0; padding: 0;}
 
 
 #main {
-  background: transparent;
+  background: #e0e0e0;
   width: image-width("timthumb.jpg");
-  margin: 0 1em;
+  margin: 0 auto;
   @include border-radius;
   @include single-box-shadow(#111,0,0,25px);
   #bgimage {
     background: image-url("timthumb.jpg") no-repeat center;
     height: image-height("timthumb.jpg");
     width: image-width("timthumb.jpg");
+    @include single-box-shadow(#666,0,15px,15px);
   }
 }
 
@@ -445,7 +446,7 @@ footer {
   }
   #main {
     width: 100%;
-    margin: 0;
+    margin: 0 auto;
     background-size: cover;
     #bgimage {
       width: 100%;

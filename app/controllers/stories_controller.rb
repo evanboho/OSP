@@ -10,7 +10,8 @@ class StoriesController < ApplicationController
 
   def random
     @story = Story.approved.order("RANDOM()").first
-    render 'show'
+    render 'show' if @story
+    redirect_to root_path, :notice => "There are no stories." if @story.nil?
   end
 
   def new
