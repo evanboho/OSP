@@ -5,12 +5,12 @@ class StoriesController < ApplicationController
   end
 
   def show
-    @story = Story.find(params[:id])
+    @story = Story.includes(:comments).find(params[:id])
     show_story
   end
 
   def random
-    @story = Story.approved.order("RANDOM()").first
+    @story = Story.approved.includes(:comments).order("RANDOM()").first
     show_story
   end
 
@@ -33,6 +33,7 @@ class StoriesController < ApplicationController
 protected
   def show_story
     if @story
+      @comments = @story.comments.approved
       @comment = @story.comments.new
       render 'show' 
     else

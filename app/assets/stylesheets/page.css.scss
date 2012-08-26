@@ -443,6 +443,8 @@ footer {
 .grid {
   @include susy-grid-background;
 }
+.float-left { float: left; }
+.float-right {float: right;}
 
 @media (max-width: 980px) {
   body {

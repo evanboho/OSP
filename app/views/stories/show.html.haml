@@ -18,7 +18,7 @@
         - if @story.approved?
           = link_to "unapprove", admin_disapprove_story_path(:id => @story.id), :class => 'button'
         - else
-          = link_to " approve", admin_approve_story_path(:id => @story.id), :class => 'button'
+          = link_to "approve", admin_approve_story_path(:id => @story.id), :class => 'button'
         = link_to "delete", admin_story_path(@story), method: :delete, :confirm => "Are you sure?", :class => 'button'
     - else
       .left
@@ -29,10 +29,10 @@
       = "Approved by #{approver}" if current_user? && @story.admin.present?
     %hr
       %h3 
-        = "comments(#{@story.comments.count})"
-      - if @story.comments.count > 0
+        = "comments(#{@comments.count})"
+      - if @comments.count > 0
         .box
-          - @story.comments.all.each do |comment|
+          - @comments.all.each do |comment|
             .featurebox 
               %h5
                 = comment.title

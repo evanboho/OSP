@@ -5,4 +5,7 @@ class Comment < ActiveRecord::Base
   validates :name, :length => { :maximum => 12 } 
   validates :title, :length => { :maximum => 20 }
   
+  scope :approved, where("approved_by IS NOT ?", nil)
+  scope :unapproved, where(:approved_by => nil)
+  
 end

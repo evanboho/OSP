@@ -21,9 +21,12 @@
               = link_to "See all stories", stories_path
           - else
             %li
-              = link_to "Unapproved (#{Story.unapproved.count})", admin_unapproved_stories_path if Story.unapproved.count > 0
+              = link_to "Unapproved (#{@unapproved_story_count})", admin_unapproved_stories_path if @unapproved_story_count && @unapproved_story_count > 0
             %li
-              = link_to "Approved (#{Story.approved.count})", admin_approved_stories_path
+              = link_to "Approved (#{@approved_story_count})", admin_approved_stories_path
+            - if @unapproved_comment_count && @unapproved_comment_count > 0
+              %li
+                = link_to "Unapproved Comments(#{@unapproved_comment_count})", comments_path
             %li
               = link_to "New Story", new_story_path
       %li

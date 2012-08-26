@@ -1,0 +1,22 @@
+= content_for :middle do
+  .featurebox
+    %h2 Unapproved Comments
+    %ul.resources
+      - @comments.all.each do |comment|
+        %li.clearfix
+          %b
+            title:
+          = comment.title
+          %br
+          %b
+            content:
+          = comment.content
+          %br
+          %b
+            left by:
+          = comment.name
+          = comment.email if comment.email  
+          %br
+          .float-right
+            = link_to "approve", approve_comment_path(:id => comment.id), :class => "button"
+            = link_to "delete", root_path, :class => "button"

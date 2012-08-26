@@ -36,11 +36,10 @@ class Admin::SettingsController < ApplicationController
     page = @setting.page == "resources" ? "resources" : "contact_us"
     if Setting.find(params[:id]).destroy
       flash[:notice] = "Deleted!"
-      redirect(page, )
+      # redirect(page, )
     else
       flash[:error] = "Something went wrong!"
     end
-
   end
 
   private
