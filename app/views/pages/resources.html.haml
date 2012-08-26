@@ -12,9 +12,9 @@
     - @settings.each do |setting|
       %li
         - if setting.name == "Family Shelter Service"
-          = link_to setting.name, setting.link, :class => "FSS-link"
+          = link_to setting.name, setting.link, {:class => "FSS-link", :target => "_blank"}
         - else
-          = link_to setting.name, setting.link
+          = link_to setting.name, setting.link, :target => "_blank"
         %br
         .tagline
           = setting.tagline

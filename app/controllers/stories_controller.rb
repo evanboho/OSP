@@ -6,12 +6,12 @@ class StoriesController < ApplicationController
 
   def show
     @story = Story.find(params[:id])
+    show_story
   end
 
   def random
     @story = Story.approved.order("RANDOM()").first
-    render 'show' if @story
-    redirect_to root_path, :notice => "There are no stories." if @story.nil?
+    show_story
   end
 
   def new
@@ -29,7 +29,17 @@ class StoriesController < ApplicationController
       render 'new'
     end
   end
-
+  
+protected
+  def show_story
+    if @story
+      @comment = @story.comments.new
+      render 'show' 
+    else
+      redirect_to root_path, :notice => "There are no stories."
+    end
+  end
+      
 
 
 end

@@ -1,5 +1,5 @@
 class Story < ActiveRecord::Base
-  attr_accessible :age, :approved_at, :body, :gender, :name, :title, :email
+  attr_accessible :age, :body, :gender, :name, :title, :email
 
   validates_presence_of :title, :message => "story needs a title"
   validates_presence_of :body, :message => "story is empty"
@@ -10,6 +10,7 @@ class Story < ActiveRecord::Base
   validates :email, :allow_blank => true, format: { with: VALID_EMAIL_REGEX }
 
   belongs_to :admin
+  has_many :comments
 
   scope :unapproved, where("approved_at IS ?", nil)
   scope :approved, where("approved_at IS NOT ?", nil)

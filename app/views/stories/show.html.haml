@@ -27,3 +27,25 @@
       = "Submitted #{time_ago_in_words(@story.created_at)} ago"
       %br
       = "Approved by #{approver}" if current_user? && @story.admin.present?
+    %hr
+      %h3 
+        = "comments(#{@story.comments.count})"
+      - if @story.comments.count > 0
+        .box
+          - @story.comments.all.each do |comment|
+            .featurebox 
+              %h5
+                = comment.title
+              %p
+                = comment.content
+              .date
+                = "Left by #{comment.name} #{time_ago_in_words(comment.created_at)} ago"
+      %hr
+      %h3 leave a comment
+      = simple_form_for @comment do |f|
+        = f.hidden_field :story_id, :value => @story.id
+        = f.input :title
+        = f.input :content, :input_html => {:class => "center"}
+        = f.input :name, :label => "first name"
+        = f.input :email
+        = f.submit "leave comment"

@@ -193,6 +193,10 @@ ul.resources {
     padding: 25px;
     border: 1px solid #ccc;
     @include border-radius;
+    &:hover {
+	  background: #ddd;
+	a { text-decoration: underline; }
+    }
   }
 }
 
