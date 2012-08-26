@@ -28,8 +28,26 @@
       %br
       = "Approved by #{approver}" if current_user? && @story.admin.present?
     %hr
+      - if current_user?
+        %h3 
+          = "unapproved comments(#{@unapproved_comments.count})"  
+          - if @unapproved_comments.count > 0
+            .box
+              - @unapproved_comments.all.each do |comment|
+                .featurebox
+                  %h5
+                    = comment.title
+                  %p
+                    = comment.content
+                  .date
+                    = "Left by #{comment.name} #{time_ago_in_words(comment.created_at)} ago"
+                  .admin-controls
+                    = link_to "approve", approve_comment_path(:id => comment.id), :class => 'button'
+                    = link_to "delete", comment_path(comment), method: :delete, :confirm => "Are you sure?", :class => 'button' 
+        %hr
       %h3 
-        = "comments(#{@comments.count})"
+        = "comments(#{@comments.count})" if !current_user?
+        = "approved comments(#{@comments.count})" if current_user?
       - if @comments.count > 0
         .box
           - @comments.all.each do |comment|
@@ -40,12 +58,16 @@
                 = comment.content
               .date
                 = "Left by #{comment.name} #{time_ago_in_words(comment.created_at)} ago"
+              - if current_user?
+                .admin-controls
+                  = link_to "unapprove", unapprove_comment_path(:id => comment.id), :class => 'button'
+                  = link_to "delete", root_path, :class => 'button'
       %hr
       %h3 leave a comment
       = simple_form_for @comment do |f|
         = f.hidden_field :story_id, :value => @story.id
         = f.input :title
-        = f.input :content, :input_html => {:class => "center"}
+        = f.input :content
         = f.input :name, :label => "first name"
         = f.input :email
         = f.submit "leave comment"

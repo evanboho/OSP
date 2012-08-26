@@ -16,6 +16,7 @@ OSP::Application.routes.draw do
   match "random_story" => "stories#random"
   resources :comments
   get "approve_comment" => "comments#approve"
+  get "unapprove_comment" => "comments#unapprove"
 
   get 'contact' => "general_mailer#contact"
   post 'contact' => "general_mailer#send_contact_us"
