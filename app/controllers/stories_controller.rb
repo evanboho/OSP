@@ -16,11 +16,14 @@ class StoriesController < ApplicationController
 
   def new
     @story = Story.new
-
   end
 
   def create
     @story = Story.new(params[:story])
+    if current_user?
+      @story.admin_id = current_user.id 
+      @story.approved_at = Time.now
+    end    
     if @story.save
       flash[:notice] = "Thank you for your contribution."
       redirect_to stories_path

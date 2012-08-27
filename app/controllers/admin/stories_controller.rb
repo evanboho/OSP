@@ -37,11 +37,20 @@ class Admin::StoriesController < StoriesController
   def disapprove
     @story = Story.find(params[:id])
     if @story.disapprove
-      flash[:notice] = "Story disapproved."
+      flash[:notice] = "Story unapproved."
       redirect_to story_path(@story)
     else
-      flash[:error] = "Story not disapproved."
+      flash[:error] = "Story not unapproved."
       redirect_to story_path(@story)
+    end
+  end
+  
+  def with_unapproved_comments
+    @stories = Comment.unapproved.collect(&:story)
+    if @stories.count < 1
+      redirect_to stories_path, :notice => "no more stories with unapproved comments"
+    else
+      render 'index'
     end
   end
 

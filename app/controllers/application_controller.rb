@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
     if current_user?
       @approved_story_count = Story.approved.count
       @unapproved_story_count = Story.unapproved.count
-      @unapproved_comment_count = Comment.unapproved.count
+      @unapproved_comment_count = Comment.unapproved.includes(:story).collect(&:story).count
     end
   end
 

@@ -4,7 +4,7 @@
 = content_for :caption do
   #caption.index
     %h2
-      = "#{params[:action].titleize} stories" if current_user?
+      = "Stories: #{params[:action].titleize}" if current_user?
       = "Our stories" if !current_user?
 
 = content_for :middle do

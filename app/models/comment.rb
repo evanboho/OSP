@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  attr_accessible :content, :email, :name, :title, :story_id
+  attr_accessible :content, :email, :name, :title, :story_id, :approved_by
   belongs_to :story
   
   validates :name, :length => { :maximum => 12 } 

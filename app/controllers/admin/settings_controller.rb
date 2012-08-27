@@ -1,5 +1,7 @@
 class Admin::SettingsController < ApplicationController
 
+  before_filter :authenticate_admin!
+
   def resources
     @setting = Setting.new
     @settings = Setting.resources.order(:id)

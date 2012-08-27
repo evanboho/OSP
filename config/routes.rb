@@ -15,9 +15,7 @@ OSP::Application.routes.draw do
   resources :stories
   match "random_story" => "stories#random"
   resources :comments
-  get "approve_comment" => "comments#approve"
-  get "unapprove_comment" => "comments#unapprove"
-
+  
   get 'contact' => "general_mailer#contact"
   post 'contact' => "general_mailer#send_contact_us"
 
@@ -26,6 +24,10 @@ OSP::Application.routes.draw do
     get "approved_stories" => "stories#approved"
     get "approve_story" => "stories#approve"
     get "disapprove_story" => "stories#disapprove"
+    get "stories_with_unapproved_comments" => "stories#with_unapproved_comments"
+    get "approve_comment" => "comments#approve"
+    get "unapprove_comment" => "comments#unapprove"
+    resources :comments, :only => [:destroy, :update]
     get "settings/resources"
     get "settings/settings"
     post "pages/resources" => "pages#update_resources"

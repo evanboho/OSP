@@ -35,15 +35,19 @@
             .box
               - @unapproved_comments.all.each do |comment|
                 .featurebox
-                  %h5
-                    = comment.title
-                  %p
-                    = comment.content
-                  .date
-                    = "Left by #{comment.name} #{time_ago_in_words(comment.created_at)} ago"
-                  .admin-controls
-                    = link_to "approve", approve_comment_path(:id => comment.id), :class => 'button'
-                    = link_to "delete", comment_path(comment), method: :delete, :confirm => "Are you sure?", :class => 'button' 
+                  .unapproved
+                    %h5
+                      = comment.title
+                    %p
+                      = comment.content
+                    .date
+                      = "Left by #{comment.name} #{time_ago_in_words(comment.created_at)} ago"
+                    .admin-controls
+                      = form_for comment, :url => admin_comment_path do |f|
+                        = f.hidden_field :id, :value => comment.id
+                        = f.hidden_field :approved_by, :value => current_user.id
+                        = f.submit "approve" #, admin_comment_path(comment), :class => 'button'
+                      = link_to "delete", admin_comment_path(comment), method: :delete, :confirm => "Are you sure?", :class => 'button' 
         %hr
       %h3 
         = "comments(#{@comments.count})" if !current_user?
@@ -60,8 +64,8 @@
                 = "Left by #{comment.name} #{time_ago_in_words(comment.created_at)} ago"
               - if current_user?
                 .admin-controls
-                  = link_to "unapprove", unapprove_comment_path(:id => comment.id), :class => 'button'
-                  = link_to "delete", root_path, :class => 'button'
+                  = link_to "unapprove", admin_unapprove_comment_path(:id => comment.id), :class => 'button'
+                  = link_to "delete", admin_comment_path(comment), method: :destroy, :class => 'button'
       %hr
       %h3 leave a comment
       = simple_form_for @comment do |f|
