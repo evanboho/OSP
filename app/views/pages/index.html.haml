@@ -1,22 +1,27 @@
-= content_for :caption do
+- content_for :caption do
   #caption
     %h2
       Family Shelter Service
-      %div stories of struggle and resilience
+      %div Sharing Stories of struggle and resilience
 
-= content_for :featurebox do
+- content_for :featurebox do
   %h3
     Welcome to Our Story Project
   %p
-    A place where those who have been impacted by domestic violence
-    can have their say, often after long silence. By sharing their
-    stories, our writers have an opportunity to be heard, and
-    others can learn and understand.
+    Those who have been impacted by domestic violence can recount their stories here.  
+    By sharing their stories, often after a long silence, our writers have an opportunity to be heard.  
+    Readers can learn, understand, and respond.   
     %br
   %div.center
     = link_to "Read a Story", random_story_path, :class => "button"
 
-= content_for :mixpanel do
+- content_for :below_featurebox do
+  .featurebox
+    %h3 My Journal - My Voice
+    %p
+      Now available!! A special guided journal to help any of us find the words to explore our thoughts and feelings. Written and designed by therapist, produced by Our Story Project. Proceeds benefit the project.
+
+- content_for :mixpanel do
   = mixpanel_track("Land on Index");
   = mixpanel_track_links('a#fssbanner', "Visit FSS.org");
   -# script{ :type => "text/javascript" }

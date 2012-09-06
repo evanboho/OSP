@@ -10,8 +10,8 @@
       = link_to image_tag("osp-logo.png"), root_path
     %ul.topnav
       %li
-        %a.drop Stories
-        %ul.subnav
+        %a.drop#stories Stories
+        %ul.subnav#stories-subnav
           - if !current_user?
             %li
               = link_to "Share your story", new_story_path
@@ -30,8 +30,13 @@
             %li
               = link_to "New Story", new_story_path
       %li
-        = link_to "Resources", pages_resources_path if !current_user
-        = link_to "Resources", admin_settings_resources_path if current_user
+        %a.drop#resources Getting Started
+        %ul.subnav#resources-subnav
+          %li
+            = link_to "Writing Tips", pages_writing_tips_path if !current_user
+          %li
+            = link_to "Resources", pages_resources_path if !current_user
+            = link_to "Resources", admin_settings_resources_path if current_user
       %li
         = link_to "Contact Us", contact_path if !current_user
         = link_to "Email Settings", admin_settings_settings_path if current_user

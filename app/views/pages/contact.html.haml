@@ -1,16 +1,18 @@
-= content_for :title do
+- content_for :title do
   Contact Us
 
-= content_for :caption do
+- content_for :caption do
   #caption.new
     %h2
       Contact Us
 
-= content_for :middle do
+- content_for :middle do
+  %br
+  %br
   .featurebox
     = form_tag( {}, :class => "simple_form") do
       %div.info
-        = label_tag :email
+        = label_tag :email "email"
         = text_field_tag :email
       %div.story
         = label_tag :subject

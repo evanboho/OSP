@@ -7,10 +7,10 @@ OSP::Application.routes.draw do
   end
 
   root :to => 'pages#index'
-  get "pages/index"
-  get "pages/resources"
-  # get "pages/contact"
-  get "pages/about"
+  get "index" => 'pages#index', :as => 'pages_index'
+  get "resources" => 'pages#resources', :as => 'pages_resources'
+  get "writing_tips" => 'pages#writing_tips', :as => 'pages_writing_tips'
+  get "about" => 'pages#about', :as => 'pages_about'
 
   resources :stories
   match "random_story" => "stories#random"

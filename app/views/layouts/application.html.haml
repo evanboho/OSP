@@ -22,6 +22,8 @@
           - if content_for?(:featurebox)
             .featurebox
               = yield :featurebox
+          - if content_for?(:below_featurebox)
+            = yield :below_featurebox
           .fsbanner
             = link_to image_tag("fssbanner.png"), "http://familyshelterservice.org", :id => "fssbanner"
           = yield

@@ -17,4 +17,7 @@ class PagesController < ApplicationController
   def setting
 
   end
+  
+  def writing_tips
+  end
 end
