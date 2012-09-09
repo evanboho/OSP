@@ -6,11 +6,13 @@ class CommentsController < ApplicationController
   
   def create
     @comment = Comment.create(params[:comment])
-    if current_user?
-      @comment.approved_by = current_user.id
-      @comment.save
+    if @comment.save
+      if current_user?
+        @comment.update_attribute(:approved_by, current_user.id)
+      end
+      flash[:notice] = "Success! Your comment will be shown once it is approved."
     end
-    redirect_to @comment.story, :notice => "Success! Your comment will be shown once it is approved."
+    redirect_to @comment.story 
   end
   
 end

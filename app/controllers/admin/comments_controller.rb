@@ -2,8 +2,14 @@ class Admin::CommentsController < ApplicationController
   
   before_filter :authenticate_admin!
   
+  def edit
+    @comment = Comment.find(params[:id])
+    @story = @comment.story
+    render 'comments/edit'
+  end
+  
   def update 
-    @comment = Comment.find(params[:comment][:id])
+    @comment = Comment.find(params[:id])
     @comment.update_attributes(params[:comment])
     if @comment.story.comments.unapproved.count > 0
       redirect_to @comment.story

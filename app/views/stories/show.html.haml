@@ -9,17 +9,15 @@
 = content_for :story_body do
   .featurebox
     .body
-      - line_breaks(@story.body).each do |line|
-        %p
-          = line
+      = markdown(@story.body)
     - if current_user?
       .admin-controls
-        = link_to "edit", edit_admin_story_path(@story), :class => 'button'
         - if @story.approved?
-          = link_to "unapprove", admin_disapprove_story_path(:id => @story.id), :class => 'button'
+          = link_to "unapprove", admin_disapprove_story_path(:id => @story.id), :class => 'button unapprove'
         - else
-          = link_to "approve", admin_approve_story_path(:id => @story.id), :class => 'button'
-        = link_to "delete", admin_story_path(@story), method: :delete, :confirm => "Are you sure?", :class => 'button'
+          = link_to "approve", admin_approve_story_path(:id => @story.id), :class => 'button approve'
+        = link_to "edit", edit_admin_story_path(@story), :class => 'button edit'
+        = link_to "delete", admin_story_path(@story), method: :delete, :confirm => "Are you sure?", :class => 'button delete'
     - else
       .left
         = link_to "Read another story", random_story_path, :class => 'button'
@@ -31,23 +29,23 @@
       - if current_user?
         %h3 
           = "unapproved comments(#{@unapproved_comments.count})"  
-          - if @unapproved_comments.count > 0
-            .box
-              - @unapproved_comments.all.each do |comment|
-                .featurebox
-                  .unapproved
-                    %h5
-                      = comment.title
-                    %p
-                      = comment.content
-                    .date
-                      = "Left by #{comment.name} #{time_ago_in_words(comment.created_at)} ago"
-                    .admin-controls
-                      = form_for comment, :url => admin_comment_path do |f|
-                        = f.hidden_field :id, :value => comment.id
-                        = f.hidden_field :approved_by, :value => current_user.id
-                        = f.submit "approve" #, admin_comment_path(comment), :class => 'button'
-                      = link_to "delete", admin_comment_path(comment), method: :delete, :confirm => "Are you sure?", :class => 'button' 
+        - if @unapproved_comments.count > 0
+          .box
+            - @unapproved_comments.all.each do |comment|
+              .featurebox
+                .unapproved
+                  %h5
+                    = comment.title
+                  %p
+                    = comment.content
+                  .date
+                    = "Left by #{comment.name} #{time_ago_in_words(comment.created_at)} ago"
+                  .admin-controls
+                    .left 
+                      = link_to "approve", admin_approve_comment_path(:id => comment.id), :class => 'button left approve'
+                      = link_to "delete", admin_comment_path(comment), method: :delete, :confirm => "Are you sure?", :class => 'button right delete' 
+                      = link_to "edit", edit_admin_comment_path(comment), :class => 'button right edit'
+                      -# f.submit "approve", :class => 'button left approve'
         %hr
       %h3 
         = "comments(#{@comments.count})" if !current_user?
@@ -64,14 +62,10 @@
                 = "Left by #{comment.name} #{time_ago_in_words(comment.created_at)} ago"
               - if current_user?
                 .admin-controls
-                  = link_to "unapprove", admin_unapprove_comment_path(:id => comment.id), :class => 'button'
-                  = link_to "delete", admin_comment_path(comment), method: :destroy, :class => 'button'
+                  = link_to "unapprove", admin_unapprove_comment_path(:id => comment.id), :class => 'button unapprove'
+                  = link_to "edit", edit_admin_comment_path(comment), :class => 'button edit'
+                  = link_to "delete", admin_comment_path(comment), method: :destroy, :class => 'button delete'
       %hr
       %h3 leave a comment
-      = simple_form_for @comment do |f|
-        = f.hidden_field :story_id, :value => @story.id
-        = f.input :title
-        = f.input :content
-        = f.input :name, :label => "first name"
-        = f.input :email
-        = f.submit "leave comment"
+      %div.box
+        = render 'comments/fields', :comment => @comment, :path => comments_path, :story => @story

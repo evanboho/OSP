@@ -1,0 +1,4 @@
+- content_for :middle do
+  .featurebox
+    = render 'comments/fields', :comment => @comment, :story => @story, :path => admin_comment_path
+  

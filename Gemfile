@@ -37,6 +37,8 @@ gem 'devise'
 
 gem 'bullet', group: :development
 
+gem 'redcarpet', '~> 1.17.2'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

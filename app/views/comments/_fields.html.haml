@@ -1,0 +1,9 @@
+= simple_form_for comment, :url => path, :html => {:class => 'comment_form' } do |f|
+  = f.hidden_field :story_id, :value => story.id
+  %div.story
+    = f.input :title
+    = f.input :content, :label => "comment"
+    = f.input :name, :label => "name", :class => "name"
+    = f.input :email, :class => "email"
+  %div{:style => "clear:both;" }
+  = f.submit "leave comment", :style => "float: right; "
