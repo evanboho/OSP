@@ -4,7 +4,7 @@
   %div.small
     Do not use your real first name or age if it may jeopardize your safety.
   %div.info
-    = f.input :name, :wrapper_html => {:class => 'name' }, :label => "First Name: "
+    = f.input :name, :wrapper_html => {:class => 'name' }, :label => "First Name"
     = f.input :age, :as => :string, :wrapper_html => { :class => 'age' }
     -# f.input :email, :wrapper_html => { :class => 'email' }
   %div{ :style => "clear:both;" } Your story
@@ -28,4 +28,4 @@
         used.
     = f.submit 'Share Story'
 
-= tinymce
+= tinymce :font => '28px'

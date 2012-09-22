@@ -9,11 +9,11 @@
 = content_for :story_body do
   .featurebox
     .body
-      = markdown(@story.body)
-    - if current_user?
-      = render 'admin/links', :resource => @story
-    - else
-      .left
+      = raw @story.body
+    .links-left
+      - if current_user?
+        = render 'admin/links', :resource => @story
+      - else
         = link_to "Read another story", random_story_path, :class => 'button'
     .date
       = "Submitted #{time_ago_in_words(@story.created_at)} ago"

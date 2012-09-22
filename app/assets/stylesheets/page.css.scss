@@ -46,7 +46,6 @@ input[type="submit"] { @extend a }
 }
 
 .container {
-  z-index: 50;
   @include container;
 }
 
@@ -95,7 +94,7 @@ a.button {
   @include single-box-shadow(#000066, 0px, -5px, 10px, 0, true);
   border: 1px solid #666;
   border-top: none;
-  z-index: 100;
+  z-index: 1000;
   @include border-radius(0 0 7px 7px);
   float: right;
   @include bg-rgba(100,100,255,0.1);
@@ -254,9 +253,8 @@ ul.resources {
 
 .middle {
   min-height: 16em;
-  z-index: -50;
   .featurebox {
-    z-index: 50;
+	margin-top: 30px;
     @include opacity(.95);
     @include clearfix;
   }
@@ -302,8 +300,7 @@ form { @include clearfix; }
     margin: 0 0 2em 0;
   }
   div.story {
-    width: 35em;
-    padding-right: 0;
+    padding: 0 5em 0 5em;
   }
   div.submit {
     clear:both;
@@ -343,6 +340,7 @@ form { @include clearfix; }
     margin: 10px 10px;
     width: 30.5em;
   }
+  
   &.comment_form { 
     text-align: left; 
     label { 
@@ -382,17 +380,24 @@ form { @include clearfix; }
 }
 
 .story_body {
-  padding-top: 13em;
+  padding-top: 0px;
   .featurebox {
     //padding-top: 2em;
     //min-height: 7em;
     //padding-bottom: 2em;
     .body {
+	  margin-top: 5em;
+	  width: 60%;
+	  background: white;
+	  float: right;
+	  text-align: left;
       font-size: .8em;
       min-height: 3em;
       padding: 2em 0;
     }
+    .links-left { clear: both; float: left; }
     .date {
+	  clear: both;
       font-style: italic;
       text-align: right;
       font-size: .8em;
