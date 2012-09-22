@@ -25,13 +25,12 @@ group :assets do
 end
 
 gem 'html5-rails'
-
-
 gem 'haml'
 gem 'haml-rails'
 gem 'jquery-rails'
 
 gem 'simple_form'
+gem 'tinymce-rails'
 
 gem 'devise'
 

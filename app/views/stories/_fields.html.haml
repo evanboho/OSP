@@ -2,15 +2,15 @@
   %div
     Personal Information
   %div.small
-    Your information will not be displayed on the site.
+    You may 
   %div.info
-    = f.input :name, :wrapper_html => {:class => 'name' }
+    = f.input :name, :wrapper_html => {:class => 'name' }, :label => "First Name: "
     = f.input :age, :as => :string, :wrapper_html => { :class => 'age' }
-    = f.input :email, :wrapper_html => { :class => 'email' }
+    -# f.input :email, :wrapper_html => { :class => 'email' }
   %div{ :style => "clear:both;" } Your story
   %div.story
     = f.input :title, :wrapper_html => { :class => 'title'}, :required => false
-    = f.input :body, :required => false, :label => false
+    = f.input :body, :required => false, :label => false, :input_html => {:class => "tinymce"}
   %div.submit
     %span.fine-print
       Please share your comments, questions, and responses with us.
@@ -27,3 +27,5 @@
         No names or identifying information will be
         used.
     = f.submit 'Share Story'
+
+= tinymce
