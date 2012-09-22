@@ -1,0 +1,21 @@
+= content_for :title do
+  Settings
+
+
+
+= content_for :middle do
+  %br
+  %br
+  .featurebox
+    %h2
+      Notifier Email Settings
+    - @contact_uses.each do |contact_us|
+      = simple_form_for contact_us, :url => admin_setting_path(contact_us) do |f|
+        = f.input :notifier_email, :label => "email"
+        = f.submit
+        %span.button
+          = link_to "delete", admin_setting_path(contact_us), method: :delete;
+      %br
+    = simple_form_for @contact_us, :url => admin_settings_path(@contact_us) do |f|
+      = f.input :notifier_email, :label => "add new email"
+      = f.submit

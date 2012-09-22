@@ -10,7 +10,7 @@ class Story < ActiveRecord::Base
   validates :email, :allow_blank => true, format: { with: VALID_EMAIL_REGEX }
 
   belongs_to :admin
-  has_many :comments
+  has_many :comments, :dependent => :destroy
 
   scope :unapproved, where("approved_at IS ?", nil)
   scope :approved, where("approved_at IS NOT ?", nil)

@@ -7,7 +7,7 @@ class Admin < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
-
+  validates_uniqueness_of :email
 
 
 end

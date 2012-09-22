@@ -30,10 +30,13 @@ OSP::Application.routes.draw do
     resources :comments, :only => [:edit, :destroy, :update]
     get "settings/resources"
     get "settings/settings"
+    get "settings/admins"
     post "pages/resources" => "pages#update_resources"
     resources :settings
     resources :stories, :only => [:destroy, :edit, :update]
   end
+  post '/add_admin', :to => "admins#add"
+  post '/remove_admin', :to => "admins#remove"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -47,11 +47,7 @@ class Admin::StoriesController < StoriesController
   
   def with_unapproved_comments
     @stories = Comment.unapproved.collect(&:story)
-    render :text => Comment.unapproved.first
-    
-  end
-  def el
-    if @stories.count < 1
+    if !@stories.first.nil?
       redirect_to stories_path, :notice => "no more stories with unapproved comments"
     else
       render 'index'

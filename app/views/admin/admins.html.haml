@@ -1,0 +1,21 @@
+= content_for :title do
+  Admins
+
+= content_for :middle do
+  - if @admins
+    .featurebox
+      %h3 Current Admins  
+      %ul
+        - @admins.each do |admin|
+          %li 
+            = admin.email
+            = link_to "Remove", remove_admin_path(:id => admin.id), method: :post unless admin == current_user
+  - if @admin
+    .featurebox
+      %h3 Add New Admin
+      = simple_form_for @admin, :url => add_admin_path do |f|
+        = f.input :email
+        %label password
+        = f.password_field :password
+        %br
+        = f.submit

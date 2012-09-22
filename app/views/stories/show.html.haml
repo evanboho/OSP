@@ -20,20 +20,20 @@
       %br
       = "Approved by #{approver}" if current_user? && @story.admin.present?
     %hr
-      - if current_user?
+      - if current_user? && @unapproved_comments.present?
         %h3 
           = "unapproved comments(#{@unapproved_comments.count})"  
         - if @unapproved_comments.count > 0
           .box
             = render :partial => 'comments/comment', :collection => @unapproved_comments, :as => :comment
         %hr
-      %h3 
-        = "comments(#{@comments.count})" if !current_user?
-        = "approved comments(#{@comments.count})" if current_user?
       - if @comments.count > 0
-        .box
-          = render :partial => 'comments/comment', :collection => @comments, :as => :comment
-      %hr
+        %h3 
+          = "comments(#{@comments.count})" if !current_user?
+          = "approved comments(#{@comments.count})" if current_user?
+          .box
+            = render :partial => 'comments/comment', :collection => @comments, :as => :comment
+        %hr
       %h3 leave a comment
       %div.box
         = render 'comments/fields', :comment => @comment, :path => comments_path, :story => @story

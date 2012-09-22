@@ -1,0 +1,28 @@
+= content_for :title do
+  Update Resources
+
+= content_for :caption do
+  #caption
+    %h2
+      Update Resources
+
+= content_for :featurebox do
+  %br
+  %ul
+    - if @settings
+      - @settings.each do |setting|
+        %li
+          = simple_form_for(setting, :url => admin_setting_path(setting)) do |f|
+            = f.input :name
+            = f.input :link
+            = f.input :tagline
+            = f.submit "Update link", :class => "button"
+            %span.button
+              = link_to "delete", admin_setting_path(setting), method: :delete
+          %br
+    - if @setting
+      = simple_form_for @setting, :url => admin_settings_path do |f|
+        = f.input :name
+        = f.input :link
+        = f.input :tagline
+        = f.submit "Add new link"

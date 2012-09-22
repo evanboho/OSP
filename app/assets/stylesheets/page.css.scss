@@ -130,6 +130,7 @@ a.button {
       float: right;
       @include inline-list;
       position: relative;
+      margin-right: 30px !important;
       li {
         position: relative;
         &:last-child { padding-right: 1em; }
@@ -201,7 +202,7 @@ footer {
       }
     }
   }
-  }
+}
 
 ul.resources {
   width: 75%;
@@ -293,7 +294,7 @@ form { @include clearfix; }
     span.error { left: -6em; z-index: 100; }
   }
   div.title { margin: 10px auto; display: inline; }
-  div.info, div.story {
+  div.info, div.story, div.comment {
 	@include clearfix;
     clear: both;
     @include bg-rgba(200,200,200,0.4);
@@ -303,10 +304,13 @@ form { @include clearfix; }
   }
   div.info { float: right; }
   div.story {
-    padding: 0 5em 0 5em;
+	width: 31em;
+    padding: 0 2em 0 2em;
   }
+  div.comment { padding: 1em; width: 30em; label { width: 6em; } }
   div.submit {
     clear:both;
+  
     .fine-print {
       width: 60%;
       margin-bottom: 10px;
@@ -353,8 +357,8 @@ form { @include clearfix; }
       padding-right: 10px;
       text-align: right; 
     } 
-    input { width: 15em; } 
-    textarea { width: 18.5em; } 
+    input { width: 10em; } 
+    textarea { width: 22em; } 
   }
 }
 
