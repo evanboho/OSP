@@ -98,7 +98,7 @@ a.button {
   z-index: 100;
   @include border-radius(0 0 7px 7px);
   float: right;
-  background: rgba(100,100,255,0.1);
+  @include bg-rgba(100,100,255,0.1);
   a { color: darken($white, 10%);
     z-index: 100;}
   a:hover { color: darken($white, 30%); }
@@ -223,7 +223,7 @@ ul.resources {
   position: absolute;
   top: 9.5em;
   padding: 10px 4%;
-  background: rgba(255,255,255,0.6);
+  @include bg-rgba(255,255,255,0.6);
   @include border-radius;
   z-index: 10;
   //@include opacity(.9);
@@ -280,7 +280,7 @@ form { @include clearfix; }
     @include border-radius;
     margin-top: .7em;
     border: 1px solid #aaa;
-    background: rgba(255,240,240,0.7);
+    @include bg-rgba(255,240,240,0.7);
     color: $red;
   }
   div.age { width: 6em; float: left; }
@@ -293,7 +293,7 @@ form { @include clearfix; }
   div.title { margin-top: 10px; }
   div.info, div.story {
     clear: both;
-    background: rgba(200,200,200,0.4);
+    @include bg-rgba(200,200,200,0.4);
     float: right;
     @include border-radius;
     width: 25em;
@@ -356,7 +356,7 @@ form { @include clearfix; }
 
 
 .featurebox {
-  background: rgba(255,255,255,0.95);
+  @include bg-rgba(255,255,255,0.95);
   padding: 10px 5%;
   @include border-radius;
   width: 80%;
@@ -409,7 +409,7 @@ form { @include clearfix; }
       padding: 3em;
       @include border-radius;
       @include single-box-shadow(#aaa);
-      background: rgba(255,255,255,0.8);
+      @include bg-rgba(255,255,255,0.8);
       li {
         padding-bottom: .5em;
       }
@@ -441,7 +441,7 @@ form { @include clearfix; }
     padding: 6px 15px;
     border: 1px solid $green;
     border-top: none;
-    background: rgba(245,255,245,0.9);
+    @include bg-rgba(245,255,245,0.9);
     color: $green;
   }
   .error {
@@ -449,7 +449,7 @@ form { @include clearfix; }
     padding: 6px 15px;
     border: 1px solid $red;
     border-top: none;
-    background: rgba(255,245,245,0.9);
+    @include bg-rgba(255,245,245,0.9);
     color: $red;
   }
 }
@@ -509,7 +509,7 @@ footer {
   }
   #caption {
     //top: 100px;
-    background: rgba(255,255,255,0.7);
+    @include bg-rgba(255,255,255,0.7);
   }
   #caption {
     &.new, &.index, &.show {
