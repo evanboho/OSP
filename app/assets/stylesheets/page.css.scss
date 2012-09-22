@@ -105,7 +105,7 @@ a.button {
 }
 
 
-header, footer {
+.header, .footer {
   @include span-columns(12);
   height: 50px;
   margin-left: auto;
