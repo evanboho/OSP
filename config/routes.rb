@@ -26,7 +26,7 @@ OSP::Application.routes.draw do
     get "disapprove_story" => "stories#disapprove"
     get "stories_with_unapproved_comments" => "stories#with_unapproved_comments"
     get "approve_comment" => "comments#approve"
-    get "unapprove_comment" => "comments#unapprove"
+    get "disapprove_comment" => "comments#disapprove"
     resources :comments, :only => [:edit, :destroy, :update]
     get "settings/resources"
     get "settings/settings"

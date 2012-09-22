@@ -29,7 +29,7 @@ class Admin::CommentsController < ApplicationController
     end
   end
   
-  def unapprove
+  def disapprove
     @comment = Comment.find(params[:id])
     @comment.approved_by = nil
     if @comment.save

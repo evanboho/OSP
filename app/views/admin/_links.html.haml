@@ -1,0 +1,7 @@
+.admin-controls
+  - if resource.approved?
+    = link_to "unapprove", unapprove_path(resource), :class => 'button left unapprove'
+  - else
+    = link_to "approve", approve_path(resource), :class => 'button left approve'
+  = link_to "edit", edit_path(resource), :class => 'button left edit'
+  = link_to "delete", delete_path(resource), method: :delete, :confirm => "Are you sure?", :class => 'button left delete'

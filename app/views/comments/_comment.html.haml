@@ -1,0 +1,11 @@
+.featurebox
+  .approved
+    %h5
+      = comment.title
+    %p
+      = markdown(comment.content)
+    .date
+      = "Left by #{comment.name} #{time_ago_in_words(comment.created_at)} ago"
+    - if current_user?
+      .left 
+        = render 'admin/links', :resource => comment

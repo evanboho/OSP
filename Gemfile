@@ -14,7 +14,7 @@ group :assets do
   gem 'susy'
 
   gem 'compass-h5bp'
-
+  gem 'html5shiv-rails'
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes

@@ -8,4 +8,8 @@ class Comment < ActiveRecord::Base
   scope :approved, where("approved_by IS NOT ?", nil)
   scope :unapproved, where(:approved_by => nil)
   
+  def approved?
+    approved_by.present?
+  end
+  
 end
