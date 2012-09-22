@@ -114,6 +114,7 @@ a.button {
   nav {
     z-index: 100;
     @include border-radius;
+    background: #111;
     @include background-image(linear-gradient(#3f3f3f, #000));
     height: 50px;
     margin: 0 auto;
