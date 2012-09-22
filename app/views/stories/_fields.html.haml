@@ -1,13 +1,15 @@
 = simple_form_for @story do |f|
-  %div
+  %div.info-container
     Personal Information
-  %div.small
-    Do not use your real first name or age if it may jeopardize your safety.
-  %div.info
-    = f.input :name, :wrapper_html => {:class => 'name' }, :label => "First Name"
-    = f.input :age, :as => :string, :wrapper_html => { :class => 'age' }
+    %div.small
+      %span.red
+        Do not use your real first name or age if it may jeopardize your safety.
+    %div.info
+      = f.input :name, :wrapper_html => {:class => 'name' }, :label => "First Name"
+      = f.input :age, :as => :string, :wrapper_html => { :class => 'age' }
     -# f.input :email, :wrapper_html => { :class => 'email' }
-  %div{ :style => "clear:both;" } Your story
+  %div.info-container
+    %div{ :style => "clear:both;" } Your story
   %div.story
     = f.input :title, :wrapper_html => { :class => 'title'}, :required => false
     = f.input :body, :required => false, :label => false, :input_html => {:class => "tinymce"}
@@ -28,4 +30,4 @@
         used.
     = f.submit 'Share Story'
 
-= tinymce :font => '28px'
+= tinymce :position => "top"

@@ -1,2 +1,3 @@
 theme: simple
 height: 300
+content_css: "/tinymce_content.css"
