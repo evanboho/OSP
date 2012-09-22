@@ -6,9 +6,9 @@ module ApplicationHelper
   end
   
   def html5_shiv
-    "<!--[if lt IE 9]>"
-      javascript_include_tag 'html5'
-    "<![endif]-->"
+    "<!--[if lt IE 9]>
+      #{javascript_include_tag 'html5'} 
+    <![endif]-->"
   end
   
   def mixpanel_track(event)

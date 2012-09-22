@@ -291,7 +291,7 @@ form { @include clearfix; }
   div.email { z-index: 100; clear: both; position: relative;
     span.error { left: -6em; z-index: 100; }
   }
-  div.title { margin-top: 10px; }
+  div.title { margin: 10px auto; display: inline; }
   div.info, div.story {
     clear: both;
     @include bg-rgba(200,200,200,0.4);
@@ -303,6 +303,7 @@ form { @include clearfix; }
   }
   div.story {
     width: 35em;
+    padding-right: 0;
   }
   div.submit {
     clear:both;
@@ -325,7 +326,7 @@ form { @include clearfix; }
     &#story_age { width: 2em; }
     &#story_name { width: 10em; }
     &#story_email { width: 16em; margin-right: 2.5em; }
-    &#story_title { width: 16em; margin-right: 9.6em; }
+    &#story_title { width: 16em; } //margin-right: 9.6em; }
     &[type="submit"] {
       @extend .button;
       color: #111;
