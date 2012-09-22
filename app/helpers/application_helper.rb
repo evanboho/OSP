@@ -7,7 +7,7 @@ module ApplicationHelper
   
   def html5_shiv
     "<!--[if lt IE 9]>"
-      javascript_include_tag 'html5shiv'
+      javascript_include_tag 'html5'
     "<![endif]-->"
   end
   
