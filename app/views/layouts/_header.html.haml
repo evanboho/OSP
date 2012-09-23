@@ -16,7 +16,7 @@
             %li
               = link_to "Share your story", new_story_path
             %li
-              = link_to "Read a story", random_story_path
+              = link_to "Read a story", story_path
             %li
               = link_to "See all stories", stories_path
           - else
@@ -24,9 +24,9 @@
               = link_to "Approved (#{@approved_story_count})", admin_approved_stories_path
             %li
               = link_to "Unapproved (#{@unapproved_story_count})", admin_unapproved_stories_path if @unapproved_story_count #&& @unapproved_story_count > 0
-            - if @unapproved_comment_count && @unapproved_comment_count > 0
+            - if @unapproved_comments_count && @unapproved_comments_count > 0
               %li
-                = link_to "New Comments (#{@unapproved_comment_count})", admin_stories_with_unapproved_comments_path
+                = link_to "New Comments (#{@unapproved_comments_count})", admin_stories_with_unapproved_comments_path
             %li
               = link_to "New Story", new_story_path
       %li
@@ -39,13 +39,14 @@
             = link_to "Resources", admin_settings_resources_path if current_user
       %li
         = link_to "Contact Us", contact_path if !current_user
-      %li
-        %a.drop#admin-settings Admin Settings
-        %ul.subnav#admin-settings-subnav
-          %li
-            = link_to "Alert Emails", admin_settings_settings_path if current_user
-          %li
-            = link_to "Admins", admin_settings_admins_path if current_user
+      - if current_user
+        %li
+          %a.drop#admin-settings Admin Settings
+          %ul.subnav#admin-settings-subnav
+            %li
+              = link_to "Alert Emails", admin_settings_settings_path if current_user
+            %li
+              = link_to "Admins", admin_settings_admins_path if current_user
       -#%li
         -#= link_to "About", pages_about_path
   #flash

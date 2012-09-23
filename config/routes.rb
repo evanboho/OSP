@@ -6,14 +6,13 @@ OSP::Application.routes.draw do
     match 'sign_out' => 'devise/sessions#destroy'
   end
 
-  root :to => 'pages#index'
   get "index" => 'pages#index', :as => 'pages_index'
   get "resources" => 'pages#resources', :as => 'pages_resources'
   get "writing_tips" => 'pages#writing_tips', :as => 'pages_writing_tips'
   get "about" => 'pages#about', :as => 'pages_about'
 
+  match "story" => "stories#random"
   resources :stories
-  match "random_story" => "stories#random"
   resources :comments, :not => [:edit, :destroy, :update]
   
   get 'contact' => "general_mailer#contact"
@@ -37,6 +36,7 @@ OSP::Application.routes.draw do
   end
   post '/add_admin', :to => "admins#add"
   post '/remove_admin', :to => "admins#remove"
+  root :to => 'pages#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

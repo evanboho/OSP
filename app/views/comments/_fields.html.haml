@@ -2,11 +2,14 @@
   %div.comment
     = f.hidden_field :story_id, :value => story.id
     -# f.input :title
-    = f.input :name, :label => "name", :class => "name"
+    = f.input :name, :label => "first name", :class => "name"
     %div{ :style => "font-size: 10px; margin-left: 12em; "}
       %div.red
         Do not use your real name if you think it might endanger your safety
     = f.input :content, :label => "comment"
     -# f.input :email, :class => "email"
-  %div{:style => "clear:both;" }
-  = f.submit "leave comment", :style => "float: right; "
+    %div{ :style => "font-size: 10px; margin-left: 12em; "}
+      Comments are moderated and will not appear until approved.
+    %br
+    %div{:style => "clear:both;" }
+      = f.submit "leave comment", :style => "float: right; "
