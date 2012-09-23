@@ -4,7 +4,6 @@
     = render 'layouts/head'
     %script{:type => "text/javascript"}
       = yield :mixpanel if content_for?(:mixpanel)
-      $('a#id').live("click", function(){alert("alert");})
   %body
     #main.clearfix
       #bgimage

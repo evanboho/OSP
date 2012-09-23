@@ -414,6 +414,13 @@ form { @include clearfix; }
     }
   }
 }
+
+.featured_story {
+	.story {
+  	font-size: 10px;
+	p { margin: 0; padding: 0; }
+	} 
+}
 .index {
   padding-top: 3em;
   .featurebox {

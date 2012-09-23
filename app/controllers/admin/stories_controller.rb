@@ -24,7 +24,7 @@ class Admin::StoriesController < StoriesController
 
   def featured
     @story = Story.featured.first
-    @stories = Story.approved
+    @stories = Story.order('featured desc').approved
     render 'admin/featured'
   end
   

@@ -28,6 +28,8 @@
               %li
                 = link_to "New Comments (#{@unapproved_comments_count})", admin_stories_with_unapproved_comments_path
             %li
+              = link_to "Featured Story", admin_featured_story_path
+            %li
               = link_to "New Story", new_story_path
       %li
         %a.drop#resources Getting Started
@@ -43,8 +45,6 @@
         %li
           %a.drop#admin-settings Admin Settings
           %ul.subnav#admin-settings-subnav
-            %li
-              = link_to "Featured Story", admin_featured_story_path
             %li
               = link_to "Alert Emails", admin_settings_settings_path
             %li
