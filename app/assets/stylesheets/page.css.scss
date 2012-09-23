@@ -66,6 +66,8 @@ ul.resources {
   &.new, &.index, &.show {
     //left: 30px;
     margin-left: 46px;
+    width: 10em;
+    text-align: center;
     top: 11em;
     background: darken($white, 5%);
     border: 1px solid #666;
