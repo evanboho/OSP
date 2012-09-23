@@ -14,6 +14,7 @@ class Story < ActiveRecord::Base
 
   scope :unapproved, where("approved_at IS ?", nil)
   scope :approved, where("approved_at IS NOT ?", nil)
+  scope :featured, where(:featured => true)
 
   before_save :titleize_title
 

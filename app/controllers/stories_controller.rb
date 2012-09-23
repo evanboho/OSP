@@ -5,13 +5,13 @@ class StoriesController < ApplicationController
   end
 
   def show
-    @story = Story.find(params[:id])
+    @story = Story.find_by_id(params[:id])
+    @story = random if params[:id] == "read"
     show_story
   end
 
   def random
     @story = Story.approved.order("RANDOM()").first
-    show_story
   end
 
   def new
@@ -39,9 +39,9 @@ protected
       @comments = @story.comments.approved
       @comment = @story.comments.new
       @unapproved_comments = @story.comments.unapproved if current_user?
-      render 'show' 
+      
     else
-      redirect_to root_path, :notice => "There are no stories."
+      redirect_to root_path, :notice => "We couldn't find that story."
     end
   end
       

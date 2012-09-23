@@ -181,7 +181,8 @@ ul.topnav li ul.subnav {
 
 .subnav a { color: #111; }
 
-footer {
+.footer {
+  a { padding: 0; }
   margin-bottom: 1em;
   nav {
     font-size: 12px;
@@ -474,12 +475,6 @@ form { @include clearfix; }
   @extend .featurebox;
   padding: 0px;
 }
-
-footer {
-
-
-}
-
 
 .grid {
   @include susy-grid-background;

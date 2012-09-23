@@ -11,8 +11,8 @@ OSP::Application.routes.draw do
   get "writing_tips" => 'pages#writing_tips', :as => 'pages_writing_tips'
   get "about" => 'pages#about', :as => 'pages_about'
 
-  match "story" => "stories#random"
   resources :stories
+  get "stories/read", :to => "stories#random", :as => 'read_story'
   resources :comments, :not => [:edit, :destroy, :update]
   
   get 'contact' => "general_mailer#contact"
@@ -26,6 +26,8 @@ OSP::Application.routes.draw do
     get "stories_with_unapproved_comments" => "stories#with_unapproved_comments"
     get "approve_comment" => "comments#approve"
     get "disapprove_comment" => "comments#disapprove"
+    get "featured_story" => "stories#featured"
+    post "new_featured_story" => "stories#new_featured"
     resources :comments, :only => [:edit, :destroy, :update]
     get "settings/resources"
     get "settings/settings"

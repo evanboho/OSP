@@ -22,6 +22,21 @@ class Admin::StoriesController < StoriesController
     render 'index'
   end
 
+  def featured
+    @story = Story.featured.first
+    @stories = Story.approved
+    render 'admin/featured'
+  end
+  
+  def new_featured
+    Story.featured.all.each do |story|
+      story.update_attribute(:featured, false)
+    end
+    @story = Story.find(params[:featured])
+    @story.update_attribute(:featured, true)
+    @stories = Story.approved
+    render 'admin/featured'
+  end
 
   def approve
     @story = Story.find(params[:id])
