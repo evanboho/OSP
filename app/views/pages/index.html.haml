@@ -5,7 +5,7 @@
       %div Sharing stories of struggle and resilience
 
 - content_for :featurebox do
-  %h3
+  %h3.center
     Welcome to Our Story Project
   %p
     Those who have been impacted by domestic violence can recount their stories here.  
@@ -18,19 +18,19 @@
 - content_for :below_featurebox do
   - if @featured.present?
     .featurebox
-      %h2.center Featured Story
+      %h3.center Featured Story
       %hr
       %h3
         = @featured.title
       %div
         = simple_format truncate(sanitize(@featured.body, :tags => []), :length => 100)
-      %br
+      %hr
       .center
         = link_to "Read More", @featured, :class => "button"
 
 
   .featurebox
-    %h3 My Journal - My Voice
+    %h3.center My Journal - My Voice
     %p
       Now available!! A special guided journal to help any of us find the words to explore our thoughts and feelings. Written and designed by a therapist, produced by Our Story Project. Proceeds benefit the project.
     .center
