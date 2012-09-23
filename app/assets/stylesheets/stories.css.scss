@@ -1,3 +1,54 @@
-// Place all the styles related to the stories controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.story_body {
+  padding-top: 0px;
+  .featurebox {
+    .body {
+	  @include border-radius;
+	  margin-top: 5em;
+	  margin-left: 17em;
+	  background: white;
+	  text-align: left;
+      font-size: .8em;
+      min-height: 3em;
+      padding: 2em;
+    p { padding: 0; margin: 0; }
+    }
+    .links-left { clear: both; float: left; }
+    .date {
+	  clear: both;
+      font-style: italic;
+      text-align: right;
+      font-size: .8em;
+    }
+  }
+}
+
+.featured_story {
+	.story {
+  		font-size: 10px;
+		p { margin: 0; padding: 0; }
+	} 
+}
+
+
+// STORY INDEX
+
+.featurebox .index {
+  padding-top: 2em;
+  padding-left: 17em;
+  min-height: 20em;
+    ul {
+	  	margin: 0;
+		font-variant: small-caps;
+		font-size: 1.4em;
+		font-weight: bold;
+      	padding: 3em;
+      	@include border-radius;
+      	@include single-box-shadow(#aaa);
+      	@include bg-rgba(255,255,255,0.8);
+      li {
+		&:not(:last-child) { border-bottom: 1px solid #aaa; }
+        padding: .5em 0;
+        span.tag { font-size: 12px; }
+      }
+  }
+}

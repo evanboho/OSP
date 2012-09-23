@@ -1,0 +1,103 @@
+.header, .footer {
+	@include span-columns(12);
+	height: 50px;
+	padding: 30px 0 0 0;
+}
+
+nav {
+	z-index: 0;
+	@include border-radius;
+	background: #111;
+	@include background-image(linear-gradient(#3f3f3f, #000));
+	height: 50px;
+	#logo {
+		float: left;
+		margin-left: 2%;
+		&:hover { @include opacity(.7); }
+	}
+}
+
+ul.topnav {
+	z-index: 100;
+	@include inline-list;
+	vertical-align: middle;
+}
+
+.header nav {
+  	ul.topnav {
+    	line-height: 50px;
+    	font-size: .8em;
+    	float: right;
+    	position: relative;
+    	margin-right: 30px !important;
+    	li {
+    		position: relative;
+      		&:last-child { padding-right: 1em; }
+      		a, a:visited {
+        		padding: 0 2em;
+        		color: white;
+        		cursor: pointer;
+        		&:hover { color: $nav-link-hover-color; }
+        		&.drop {
+        			padding-right: 14px;
+        			background: image-url('down-arrow.png') no-repeat;
+        			background-position: center right; //70px 3px;
+        		}	
+			}
+      	}
+    }
+}
+
+
+ul.topnav li ul.subnav {
+  z-index: 100;
+  position: absolute;
+  left: 13px; top: 32px;
+  display: none;
+  background: #aaa;
+  @include background-image(linear-gradient(#aaa, #fff));
+  @include single-box-shadow(#222, 0, 0, 25px);
+  @include border-radius(0px 0px 7px 7px);
+  border: 1px solid #000;
+  color: #111;
+  li {
+    display: block;
+    &:not(:last-child) { border-bottom: 1px solid #aaa; }
+    &:hover { background: #ccc; color: blue; }
+    &:last-child {
+      @include border-radius(0px 0px 7px 7px); }
+  }
+    a {
+      display: block;
+      padding: 0 15px;
+      color: #111 !important;
+      &:hover { color: $blue; }
+    }
+  
+}
+
+.subnav a { color: #111; width: 120px; }
+
+.footer {
+  margin-bottom: 2em;
+  nav {
+    font-size: 12px;
+    height: 40px;
+    color: #f0f0f0;
+    ul.topnav {
+      margin-left: 2%;
+      line-height: 40px;
+      float: left;
+      li {
+        a, a:visited { color: $blue; padding: 0px; }
+        span { padding: 0 5px; }
+        &:after {
+          content: " | ";
+        }
+        &:last-child:after {
+          content: " ";
+        }
+      }
+    }
+  }
+}

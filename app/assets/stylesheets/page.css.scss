@@ -1,87 +1,10 @@
-// Place all the styles related to the Pages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-html, body {
-  height: 100%;
-  background-color: #f0f0f0;
-  font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Geneva, sans-serif;
-  font-size: 17px;
-  margin: 0;
-  width: 100%;
-  // height: image-height("timthumb.jpg"); // @extend .lucida
-}
-
-button, input {
-  font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Geneva, sans-serif;
-}
-
-a, a:visited, a:hover { text-decoration: none; letter-spacing: 0;}
-a, a:visited { color: $blue; }
-a:hover { color: darken($blue, 35%); }
-ul { list-style: none; margin: 0; padding: 0;}
-
-input[type="submit"] { @extend a }
-
-.left { float: left; }
-.right { float: right; }
-
-#main {
-  background: #e0e0e0;
-  width: image-width("timthumb.jpg");
-  margin: 0 auto;
-  @include border-radius;
-  @include single-box-shadow(#111,0,0,25px);
-  #bgimage {
-    background: image-url("timthumb.jpg") no-repeat center;
-    height: image-height("timthumb.jpg");
-    width: image-width("timthumb.jpg");
-    @include single-box-shadow(#666,0,15px,15px);
+.middle {
+  min-height: 16em;
+  .featurebox {
+	margin-top: 30px;
+    @include opacity(.95);
+    @include clearfix;
   }
-}
-
-.box {
-  display: block;
-  width: 100%;
-}
-
-.container {
-  @include container;
-}
-
-.small {
-  font-size: .6em;
-}
-
-.button {
-  border: 1px solid #999;
-  border-bottom: 2px solid #666;
-  border-right: 1px solid #666;
-  margin: 0 3px;
-  @include opacity(.8);
-  padding: 5px 15px;
-  @include border-radius(10px);
-  @include single-box-shadow(#999,0,-2px,5px,0,true);
-  @include background-image(linear-gradient(#fff, #ddd));
-  text-transform: lowercase;
-  font-variant: small-caps;
-  font-size: .9em;
-  letter-spacing: 2px;
-  font-weight: bold;
-  text-align: center;
-  a { color: $black; letter-spacing: 2px; }
-  &.approve { @include background-image(linear-gradient($white, #bbffbb));}
-  &.edit { @include background-image(linear-gradient($white, #ffff99)); }
-  &.delete { @include background-image(linear-gradient($white, #ffaaaa)); }
-  &.unapprove { @include background-image(linear-gradient($white, #ffB399)); }
-  &:hover { 
-	@include background-image(linear-gradient(#fff, #aaa)); 
-	@include single-box-shadow(#000066, 0px, 0px, 5px);
-	}
-}
-
-a.button {
-  @extend .button;
 }
 
 #buy_journal_button {
@@ -103,107 +26,7 @@ a.button {
   a:hover { color: darken($white, 30%); }
 }
 
-
-.header, .footer {
-  @include span-columns(12);
-  height: 50px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 30px 0 0 0;
-  nav {
-    z-index: 100;
-    @include border-radius;
-    background: #111;
-    @include background-image(linear-gradient(#3f3f3f, #000));
-    height: 50px;
-    margin: 0 auto;
-    #logo {
-      float: left;
-      margin-left: 2%;
-      &:hover { @include opacity(.7); }
-    }
-    ul.topnav {
-      color: $nav-link-color;
-      line-height: 50px;
-      vertical-align: middle;
-      font-size: .8em;
-      float: right;
-      @include inline-list;
-      position: relative;
-      margin-right: 30px !important;
-      li {
-        position: relative;
-        &:last-child { padding-right: 1em; }
-        a, a:visited {
-          padding: 0 1em;
-          color: white;
-          cursor: pointer;
-          &:hover { color: $nav-link-hover-color; }
-          &.drop {
-            padding-right: 14px;
-            //margin-right: 15px;
-            background: image-url('down-arrow.png') no-repeat;
-            background-position: center right; //70px 3px;
-          }
-        }
-      }
-    }
-  }
-}
-
-ul.topnav li ul.subnav {
-  z-index: 100;
-  position: absolute;
-  left: 0; top: 33px;
-  display: none;
-  width: auto;
-  min-width: 170px;
-  background: #aaa;
-  @include background-image(linear-gradient(#aaa, #fff));
-  @include single-box-shadow(#222, 0, 0, 25px);
-  @include border-radius(0px 0px 7px 7px);
-  border: 1px solid #000;
-  color: #111;
-  li {
-    display: block;
-    line-height: 40px;
-    &:not(:last-child) { border-bottom: 1px solid #aaa; }
-    &:hover { background: #ccc; }
-    &:last-child {
-      @include border-radius(0px 0px 7px 7px); }
-    a {
-      display: block;
-      padding: 0 15px;
-      color: #111 !important;
-    }
-  }
-}
-
-.subnav a { color: #111; }
-
-.footer {
-  a { padding: 0; }
-  margin-bottom: 1em;
-  nav {
-    font-size: 12px;
-    height: 40px;
-    ul.topnav {
-      margin-left: 2%;
-      line-height: 40px;
-      float: left;
-      li {
-        a, a:visited { color: $blue; padding: 0px; }
-        span { padding: 0 5px; }
-        &:after {
-          content: " | ";
-        }
-        &:last-child:after {
-          content: " ";
-        }
-      }
-    }
-  }
-}
+// RESOURCES
 
 ul.resources {
   width: 75%;
@@ -222,15 +45,16 @@ ul.resources {
 .tagline {
   margin: 0 0 0 5em;
   color: #777;
-
 }
+
+
 #caption {
   position: absolute;
   top: 9.5em;
   padding: 10px 4%;
   @include bg-rgba(255,255,255,0.6);
   @include border-radius;
-  z-index: 10;
+  z-index: 100;
   //@include opacity(.9);
   h2 {
     color: $black;
@@ -239,206 +63,19 @@ ul.resources {
     font-weight: normal;
     div { color: lighten($black, 10%); }
   }
-}
-#caption {
   &.new, &.index, &.show {
-    left: 15px;
+    //left: 30px;
+    margin-left: 46px;
+    top: 11em;
     background: darken($white, 5%);
     border: 1px solid #666;
     @include opacity(.95);
   }
   &.show {
-    width: 30%;
-    text-align: center;
+    top: 15.5em;
     h2 {
       font-variant: small-caps;
     }
-  }
-}
-
-.middle {
-  min-height: 16em;
-  .featurebox {
-	margin-top: 30px;
-    @include opacity(.95);
-    @include clearfix;
-  }
-}
-.center { text-align: center; margin: 0 auto; }
-
-form { @include clearfix; }
-
-.simple_form {
-  text-align: right;
-  label {
-    line-height: 45px;
-    font-variant: small-caps;
-    text-transform: lowercase;
-    font-weight: bold;
-  }
-  span.error {
-    position: absolute;
-    font-size: .7em;
-    padding: 5px;
-    @include border-radius;
-    margin-top: .7em;
-    border: 1px solid #aaa;
-    @include bg-rgba(255,240,240,0.7);
-    color: $red;
-  }
-  div.info-container { width: 35em; margin: 0 auto; }
-  div.age { width: 6em; float: left; }
-  div.name { position: relative; width: 17em; float: left;
-    span.error { left: -6em; }
-  }
-  div.email { z-index: 100; clear: both; position: relative;
-    span.error { left: -6em; z-index: 100; }
-  }
-  div.title { margin: 10px auto; display: inline; }
-  div.info, div.story, div.comment {
-	@include clearfix;
-    clear: both;
-    @include bg-rgba(200,200,200,0.4);
-    @include border-radius;
-    width: 25em;
-    margin: 0 auto 2em auto;
-  }
-  div.info { float: right; }
-  div.story {
-	width: 31em;
-    padding: 0 2em 0 2em;
-  }
-  div.comment { padding: 1em; width: 30em; label { width: 6em; } }
-  div.submit {
-    clear:both;
-  
-    .fine-print {
-      width: 60%;
-      margin-bottom: 10px;
-      text-align: left;
-      font-size: .6em;
-      float: left;
-    }
-  }
-  .red {
-    color: darken(red, 20%);
-   }
-
-  input {
-    clear: both;
-    padding: 0 .2em;
-    @include border-radius(4px);
-    margin: 10px 10px;
-    &#story_age { width: 2em; }
-    &#story_name { width: 10em; }
-    &#story_email { width: 16em; margin-right: 2.5em; }
-    &#story_title { width: 16em; } //margin-right: 9.6em; }
-    &[type="submit"] {
-      @extend .button;
-      color: #111;
-      @include border-radius(10px);
-      @include single-box-shadow(#999, 2px, -5px, 10px, 0px, true);
-      &:hover { background: #bbb; }
-    }
-  }
-  textarea {
-    font-size: 14px;
-    padding: 0 .2em;
-    @include border-radius;
-    height: 10em;
-    margin: 10px 10px;
-    width: 30.5em;
-  }
-  
-  &.comment_form { 
-    text-align: left; 
-    label { 
-      display: inline-block;
-      width: 10em;
-      padding-right: 10px;
-      text-align: right; 
-    } 
-    input { width: 10em; } 
-    textarea { width: 22em; } 
-  }
-}
-
-.featurebox {
-  @include bg-rgba(255,255,255,0.95);
-  padding: 10px 5%;
-  @include border-radius;
-  width: 80%;
-  margin: 0 auto 2em auto;
-  border: 1px solid $grey;
-  @include single-box-shadow(#666,0,0,10px);
-  h3 {
-    font-weight: normal;
-  }
-  p {
-    font-weight: 100;
-    letter-spacing: -1px;
-    word-spacing: 1px;
-    line-height: 1.5em;
-    margin-left: 5%;
-  }
-  img {
-    width: 100%;
-    @include border-radius;
-  }
-}
-
-.story_body {
-  padding-top: 0px;
-  .featurebox {
-    //padding-top: 2em;
-    //min-height: 7em;
-    //padding-bottom: 2em;
-    .body {
-	  @include border-radius;
-	  margin-top: 5em;
-	  width: 30em;
-	  background: white;
-	  float: right;
-	  text-align: left;
-      font-size: .8em;
-      min-height: 3em;
-      padding: 2em;
-    p { padding: 0; margin: 0; }
-    }
-    .links-left { clear: both; float: left; }
-    .date {
-	  clear: both;
-      font-style: italic;
-      text-align: right;
-      font-size: .8em;
-    }
-  }
-}
-
-.featured_story {
-	.story {
-  	font-size: 10px;
-	p { margin: 0; padding: 0; }
-	} 
-}
-.index {
-  padding-top: 3em;
-  .featurebox {
-    padding-top: 2em;
-    padding-bottom: 2em;
-    ul {
-      //text-align: right;
-      list-style: disc;
-      margin-left: 15em;
-      padding: 3em;
-      @include border-radius;
-      @include single-box-shadow(#aaa);
-      @include bg-rgba(255,255,255,0.8);
-      li {
-        padding-bottom: .5em;
-      }
-    }
-
   }
 }
 
@@ -484,64 +121,7 @@ form { @include clearfix; }
 }
 
 .grid {
-  @include susy-grid-background;
+ // @include susy-grid-background;
 }
 .float-left { float: left; }
 .float-right {float: right;}
-
-@media (max-width: 980px) {
-  body {
-    font-size: 16px;
-  }
-  #main {
-    width: 100%;
-    margin: 0 auto;
-    background-size: cover;
-    #bgimage {
-      width: 100%;
-      background-size: cover;
-    }
-  }
-  header {
-    nav {
-      //ul { clear: both; float: left; }
-    }
-  }
-}
-@media (max-width: 800px) {
-  .container { width: 100%; padding: 0px; }
-  header {
-    height: auto;
-    padding: 0;
-    img { width: 200px; margin-top: 10px; }
-  }
-  #caption {
-    &.new, &.index, &.show { left: 0; }
-    h2 { font-size: 1em; }
-  }
-}
-
-@media (max-width: 650px) {
-  body {
-    font-size: 14px;
-  }
-  #caption {
-    //top: 100px;
-    @include bg-rgba(255,255,255,0.7);
-  }
-  #caption {
-    &.new, &.index, &.show {
-      display: none;
-    }
-  }
-  .featurebox {
-    margin: 0;
-    width: 90%;
-    padding: 10px 5%;
-  }
-}
-@media (max-width: 480px) {
-  body {
-    font-size: 12px;
-  }
-}

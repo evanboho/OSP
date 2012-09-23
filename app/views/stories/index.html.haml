@@ -7,10 +7,13 @@
       = "Stories: #{params[:action].titleize}" if current_user?
       = "Our stories" if !current_user?
 
-= content_for :middle do
-  .index
-    .featurebox
+= content_for :story_body do
+  .featurebox
+    .index
       %ul
         - @stories.each do |story|
           %li
             = link_to story.title, story
+            %span.tag
+              = "by #{story.name}" if story.name.present?
+              = "- #{story.created_at.strftime("%m/%e/%y")}" 

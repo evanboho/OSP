@@ -1,0 +1,98 @@
+html, body {
+	background-color: #f6f6f6;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Geneva, sans-serif;
+	font-size: 16px;
+}
+
+a, a:visited { color: $blue; text-decoration: none; }
+a:hover { color: darken($blue, 35%); }
+ul { list-style: none; margin: 0; padding: 0;}
+
+.left { float: left; }
+.right { float: right; }
+
+.container {
+	@include container;
+}
+
+#main {
+	background: #e0e0e0;
+	width: image-width("timthumb.jpg");
+	margin: 0 auto;
+	@include border-radius;
+	@include single-box-shadow(#111,0,0,25px);
+	@include clearfix;
+	#bgimage {
+		background: image-url("timthumb.jpg") no-repeat center;
+		height: image-height("timthumb.jpg");
+		width: image-width("timthumb.jpg");
+		@include single-box-shadow(#666,0,15px,15px);
+	}
+}
+
+.box {
+	display: block;
+	width: 100%;
+}
+
+.small {
+	font-size: 10px;
+}
+
+.button {
+	border: 1px solid #999;
+	border-bottom: 2px solid #666;
+	border-right: 1px solid #666;
+	margin: 0 3px;
+	@include opacity(.8);
+	padding: 5px 15px;
+	@include border-radius(10px);
+	@include single-box-shadow(#999,0,-2px,5px,0,true);
+	@include background-image(linear-gradient(#fff, #ddd));
+	text-transform: lowercase;
+	font-variant: small-caps;
+	font-size: .9em;
+	letter-spacing: 2px;
+	font-weight: bold;
+	text-align: center;
+	a { color: $black; letter-spacing: 2px; }
+	&.approve { @include background-image(linear-gradient($white, #bbffbb));}
+	&.edit { @include background-image(linear-gradient($white, #ffff99)); }
+	&.delete { @include background-image(linear-gradient($white, #ffaaaa)); }
+	&.unapprove { @include background-image(linear-gradient($white, #ffB399)); }
+	&:hover { 
+		@include background-image(linear-gradient(#fff, #aaa)); 
+ 		@include single-box-shadow(#000066, 0px, 0px, 5px);
+	}
+}
+
+.featurebox {
+  @include bg-rgba(255,255,255,0.95);
+  padding: 10px 5%;
+  @include border-radius;
+  width: 80%;
+  margin: 0 auto 2em auto;
+  border: 1px solid $grey;
+  @include single-box-shadow(#666,0,0,10px);
+  h3 {
+    font-weight: normal;
+  }
+  p {
+    font-weight: 100;
+    letter-spacing: -1px;
+    word-spacing: 1px;
+    line-height: 1.5em;
+    margin-left: 5%;
+  }
+  img {
+    width: 100%;
+    @include border-radius;
+  }
+}
+
+
+a.button {
+//  @extend .button;
+}
+
+.center { text-align: center; margin: 0 auto; }

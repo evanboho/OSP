@@ -5,7 +5,7 @@
     %script{:type => "text/javascript"}
       = yield :mixpanel if content_for?(:mixpanel)
   %body
-    #main.clearfix
+    #main
       #bgimage
         .container
           = render 'layouts/header'

@@ -1,0 +1,96 @@
+form { @include clearfix; }
+
+.simple_form {
+  text-align: right;
+  label {
+    line-height: 45px;
+    font-variant: small-caps;
+    text-transform: lowercase;
+    font-weight: bold;
+  }
+  span.error {
+    position: absolute;
+    font-size: .7em;
+    padding: 5px;
+    @include border-radius;
+    margin-top: .7em;
+    border: 1px solid #aaa;
+    @include bg-rgba(255,240,240,0.7);
+    color: $red;
+  }
+  div.info-container { width: 35em; margin: 0 auto; }
+  div.age { width: 6em; float: left; }
+  div.name { position: relative; width: 17em; float: left;
+    span.error { left: -6em; }
+  }
+  div.email { z-index: 100; clear: both; position: relative;
+    span.error { left: -6em; z-index: 100; }
+  }
+  div.title { margin: 10px auto; display: inline; }
+  div.info, div.story, div.comment {
+	@include clearfix;
+    clear: both;
+    @include bg-rgba(200,200,200,0.4);
+    @include border-radius;
+    width: 25em;
+    margin: 0 auto 2em auto;
+  }
+  div.info { float: right; }
+  div.story {
+	width: 31em;
+    padding: 0 2em 0 2em;
+  }
+  div.comment { padding: 1em; width: 30em; label { width: 6em; } }
+  div.submit {
+    clear:both;
+  
+    .fine-print {
+      width: 60%;
+      margin-bottom: 10px;
+      text-align: left;
+      @extend .small;
+      float: left;
+    }
+  }
+  .red {
+    color: darken(red, 20%);
+   }
+
+  input {
+    clear: both;
+    padding: 0 .2em;
+    @include border-radius(4px);
+    margin: 10px 10px;
+    &#story_age { width: 2em; }
+    &#story_name { width: 10em; }
+    &#story_email { width: 16em; margin-right: 2.5em; }
+    &#story_title { width: 16em; } //margin-right: 9.6em; }
+    &[type="submit"] {
+      @extend .button;
+      color: #111;
+      @include border-radius(10px);
+      @include single-box-shadow(#999, 2px, -5px, 10px, 0px, true);
+      &:hover { background: #bbb; }
+    }
+  }
+  textarea {
+    font-size: 14px;
+    padding: 0 .2em;
+    @include border-radius;
+    height: 10em;
+    margin: 10px 10px;
+    width: 30.5em;
+  }
+  
+  &.comment_form { 
+    text-align: left; 
+    label { 
+      display: inline-block;
+      width: 10em;
+      padding-right: 10px;
+      text-align: right; 
+    } 
+    input { width: 10em; } 
+    textarea { width: 22em; } 
+  }
+}

@@ -1,0 +1,23 @@
+#logo
+  = link_to image_tag("osp-logo.png"), root_path
+%ul.topnav
+  %li
+    %a.drop#stories Stories
+    %ul.subnav#stories-subnav
+      %li
+        = link_to "Share your story", new_story_path
+      %li
+        = link_to "Read a story", read_story_path
+      %li
+        = link_to "See all stories", stories_path
+  %li
+    %a.drop#resources Getting Started
+    %ul.subnav#resources-subnav
+      %li
+        = link_to "Writing Tips", pages_writing_tips_path
+      %li
+        = link_to "Resources", pages_resources_path
+  %li
+    = link_to "Contact Us", contact_path
+  -#%li
+    -#= link_to "About", pages_about_path
