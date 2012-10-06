@@ -1,3 +1,4 @@
 LOG:  database system was shut down at 2012-09-23 18:50:22 CDT
 LOG:  autovacuum launcher started
 LOG:  database system is ready to accept connections
+WARNING:  could not open statistics file "pg_stat_tmp/pgstat.stat": Permission denied
