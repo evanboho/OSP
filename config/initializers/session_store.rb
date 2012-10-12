@@ -1,6 +1,6 @@
 # Be sure to restart your server when you modify this file.
 if ENV["RAILS_ENV"] == "production"
-  OSP::Application.config.session_store :cookie_store, key: '_OSP_session', :domain => "ourstoryproject.org"
+  OSP::Application.config.session_store :cookie_store, key: '_OSP_session'
 else
   OSP::Application.config.session_store :cookie_store, key: '_OSP_session' #, :domain => "ourstoryproject.org"
 end

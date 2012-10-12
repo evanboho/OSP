@@ -5,7 +5,6 @@
 #   gem 'sqlite3'
 development:
   adapter: postgresql
-  # username: evanboho
   database: osp_development
   host: localhost
   encoding: UTF8
