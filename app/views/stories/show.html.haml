@@ -10,8 +10,6 @@
   .featurebox
     .body
       = raw @story.body
-    .body
-      = simple_format @story.body
     .links-left
       - if current_user?
         = render 'admin/links', :resource => @story
