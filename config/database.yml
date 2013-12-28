@@ -5,7 +5,7 @@
 #   gem 'sqlite3'
 development:
   adapter: postgresql
-  # username: evanboho
+  username: postgres
   database: osp_development
   host: localhost
   encoding: UTF8
@@ -15,6 +15,7 @@ development:
 # Do not set this db to the same as development or production.
 test: &test
   adapter: postgresql
+  username: postgres
   database: osp_test
   host: localhost
   encoding: UTF8
