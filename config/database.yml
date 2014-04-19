@@ -25,3 +25,4 @@ production:
   database: osp_production
   host: localhost
   encoding: UTF8
+
