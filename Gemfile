@@ -8,15 +8,11 @@ gem 'pg'
 # Gems used only for assets and not required
 # in production environments by default.
 gem 'compass-rails'
-gem 'compass'
-
 gem 'compass-h5bp'
-
-gem 'sass-rails'
-# gem 'compass'
+gem 'sass-rails', '~> 4.0.3'
 gem 'susy'
 gem 'html5shiv-rails'
-gem 'coffee-rails' #, '~> 3.2.1'
+gem 'coffee-rails'
 
 gem 'uglifier', '>= 1.0.3'
 
@@ -33,7 +29,7 @@ gem 'devise'
 
 gem 'bullet', group: :development
 
-gem 'redcarpet', '~> 1.17.2'
+gem 'redcarpet', '~> 3.1.1'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
