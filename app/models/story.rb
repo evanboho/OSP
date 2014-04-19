@@ -1,6 +1,4 @@
 class Story < ActiveRecord::Base
-  attr_accessible :age, :body, :gender, :name, :title, :email
-
   validates_presence_of :title, :message => "story needs a title"
   validates_presence_of :body, :message => "story is empty"
   validates_numericality_of :age, :allow_blank => true
@@ -12,9 +10,9 @@ class Story < ActiveRecord::Base
   belongs_to :admin
   has_many :comments, :dependent => :destroy
 
-  scope :unapproved, where("approved_at IS ?", nil)
-  scope :approved, where("approved_at IS NOT ?", nil)
-  scope :featured, where(:featured => true)
+  scope :unapproved, -> {where("approved_at IS ?", nil)}
+  scope :approved, -> {where("approved_at IS NOT ?", nil)}
+  scope :featured, -> {where(:featured => true)}
 
   before_save :titleize_title
 

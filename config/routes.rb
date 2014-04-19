@@ -1,10 +1,10 @@
 OSP::Application.routes.draw do
 
-  devise_scope :admins do
-    get 'admin' => 'devise/sessions#new'
-    match 'sign_out' => 'devise/sessions#destroy'
+  devise_for :admins
+  devise_scope :admin do
+    get '/admin', to: 'devise/sessions#new'
+    get '/sign_out', to: 'devise/sessions#destroy'
   end
-
 
   get "index" => 'pages#index', :as => 'pages_index'
   get "resources" => 'pages#resources', :as => 'pages_resources'
@@ -38,7 +38,7 @@ OSP::Application.routes.draw do
   end
   post '/add_admin', :to => "admins#add"
   post '/remove_admin', :to => "admins#remove"
-  root :to => 'pages#index'
+  root to: 'pages#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
