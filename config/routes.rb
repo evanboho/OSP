@@ -1,10 +1,10 @@
 OSP::Application.routes.draw do
 
-
-  devise_for :admins do
-    match 'admin' => 'devise/sessions#new'
+  devise_scope :admins do
+    get 'admin' => 'devise/sessions#new'
     match 'sign_out' => 'devise/sessions#destroy'
   end
+
 
   get "index" => 'pages#index', :as => 'pages_index'
   get "resources" => 'pages#resources', :as => 'pages_resources'
@@ -14,7 +14,7 @@ OSP::Application.routes.draw do
   resources :stories
   get "stories/read", :to => "stories#random", :as => 'read_story'
   resources :comments, :not => [:edit, :destroy, :update]
-  
+
   get 'contact' => "general_mailer#contact"
   post 'contact' => "general_mailer#send_contact_us"
 
