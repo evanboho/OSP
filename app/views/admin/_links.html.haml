@@ -1,7 +1,11 @@
 .admin-controls
-  - if resource.approved?
-    = link_to "unapprove", unapprove_path(resource), :class => 'button left unapprove'
-  - else
-    = link_to "approve", approve_path(resource), :class => 'button left approve'
-  = link_to "edit", edit_path(resource), :class => 'button left edit'
-  = link_to "delete", delete_path(resource), method: :delete, :confirm => "Are you sure?", :class => 'button left delete'
+  = form_for [:admin, resource] do |f|
+    = f.hidden_field :approved_by, value: current_user.id
+    - if resource.approved?
+      = f.hidden_field :approve, value: false
+      = f.submit 'unapprove', class: 'button left unapprove'
+    - else
+      = f.hidden_field :approve, value: true
+      = f.submit 'approve', class: 'button left approve'
+    = link_to 'edit', edit_path(resource), :class => 'button left edit'
+    = link_to 'delete', delete_path(resource), method: :delete, :confirm => 'Are you sure?', :class => 'button left delete'

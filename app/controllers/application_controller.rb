@@ -6,12 +6,11 @@ class ApplicationController < ActionController::Base
 
 
   def current_user
-  #   current_admin
+    current_admin
   end
 
   def current_user?
-    # user_signed_in?
-    # current_user.present?
+    admin_signed_in?
   end
 
 
@@ -21,6 +20,16 @@ class ApplicationController < ActionController::Base
       @unapproved_story_count = Story.unapproved.count
       unapproved_comment_stories = Comment.unapproved.includes(:story).collect(&:story)
       @unapproved_comments_count = unapproved_comment_stories.first.nil? ? 0 : unapproved_comment_stories.count
+    end
+  end
+
+  def method_missing(method, *args)
+    method = method.to_s
+    if method =~ /find_/
+      klass = method.gsub("find_", "")
+      instance_variable_set(eval(":@#{klass}"), klass.classify.constantize.find(params[:id]))
+    else
+      super
     end
   end
 

@@ -21,8 +21,8 @@ OSP::Application.routes.draw do
   namespace :admin do
     get "unapproved_stories" => "stories#unapproved"
     get "approved_stories" => "stories#approved"
-    get "approve_story" => "stories#approve"
-    get "disapprove_story" => "stories#disapprove"
+    # get "approve_story" => "stories#approve"
+    # get "disapprove_story" => "stories#disapprove"
     get "stories_with_unapproved_comments" => "stories#with_unapproved_comments"
     get "approve_comment" => "comments#approve"
     get "disapprove_comment" => "comments#disapprove"

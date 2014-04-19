@@ -1,14 +1,12 @@
-class Admin::StoriesController < StoriesController
-
+class Admin::StoriesController < AdminController
   before_filter :authenticate_admin!
+  before_filter :find_story, only: [:show, :edit, :update, :destroy]
 
   def edit
-    @story = Story.find(params[:id])
   end
 
   def update
-    @story = Story.find(params[:id])
-    @story.update_attributes(params[:story])
+    @story.update(story_params)
     redirect_to story_path(@story)
   end
 
@@ -27,7 +25,7 @@ class Admin::StoriesController < StoriesController
     @stories = Story.order('featured desc').approved
     render 'admin/featured'
   end
-  
+
   def new_featured
     Story.featured.all.each do |story|
       story.update_attribute(:featured, false)
@@ -38,28 +36,6 @@ class Admin::StoriesController < StoriesController
     render 'admin/featured'
   end
 
-  def approve
-    @story = Story.find(params[:id])
-    if @story.approve(current_user.id)
-      flash[:notice] = "Story approved"
-      redirect_to story_path(@story)
-    else
-      flash[:error] = "Something went wrong"
-      redirect_to story_path(@story)
-    end
-  end
-
-  def disapprove
-    @story = Story.find(params[:id])
-    if @story.disapprove
-      flash[:notice] = "Story unapproved."
-      redirect_to story_path(@story)
-    else
-      flash[:error] = "Story not unapproved."
-      redirect_to story_path(@story)
-    end
-  end
-  
   def with_unapproved_comments
     @stories = Comment.unapproved.collect(&:story)
     if !@stories.first.nil?
@@ -78,6 +54,12 @@ class Admin::StoriesController < StoriesController
       flash[:error] = "Story not deleted"
       render 'show'
     end
+  end
+
+  private
+
+  def story_params
+    params.require(:story).permit(:approve, :approved_by)
   end
 
 end

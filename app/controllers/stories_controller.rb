@@ -1,4 +1,5 @@
 class StoriesController < ApplicationController
+  before_action :find_story, only: [:show, :edit, :update, :destroy]
 
   def index
     @stories = Story.approved
@@ -19,11 +20,11 @@ class StoriesController < ApplicationController
   end
 
   def create
-    @story = Story.new(params[:story])
+    @story = Story.new(story_params)
     if current_user?
-      @story.admin_id = current_user.id 
+      @story.admin_id = current_user.id
       @story.approved_at = Time.now
-    end    
+    end
     if @story.save
       flash[:notice] = "Thank you for your contribution."
       redirect_to stories_path
@@ -32,19 +33,21 @@ class StoriesController < ApplicationController
       render 'new'
     end
   end
-  
+
 protected
   def show_story
     if @story
       @comments = @story.comments.approved
       @comment = @story.comments.new
       @unapproved_comments = @story.comments.unapproved if current_user?
-      
+
     else
       redirect_to root_path, :notice => "We couldn't find that story."
     end
   end
-      
 
+  def story_params
+    params.require(:story).permit(:name, :age, :title, :body)
+  end
 
 end

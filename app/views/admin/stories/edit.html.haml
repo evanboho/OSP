@@ -1,0 +1,22 @@
+= content_for :title do
+  Edit Story
+
+-#= content_for :caption do
+-#  #caption.new
+-#    %h2
+-#      Edit Story
+
+= content_for :middle do
+  .featurebox
+    = simple_form_for(@story, :url => admin_story_path(@story)) do |f|
+      %div
+      %div.small
+      %div.info
+      %div{ :style => "clear:both;"}
+      %div.story
+        = f.input :title, :wrapper_html => { :class => 'title'}, :required => false
+        = f.input :body, :required => false, :label => false, :input_html => { :class => "tinymce" }
+      %div.submit
+        = f.submit 'Update Story' if current_user?
+
+= tinymce :convert_new_lines_to_brs => true

@@ -14,7 +14,7 @@
       = simple_format @story.body
     .links-left
       - if current_user?
-        = render 'admin/links', :resource => @story
+        = render 'admin/links', resource: @story
       - else
         = link_to "Read another story", read_story_path, :class => 'button'
     .date
@@ -23,14 +23,14 @@
       = "Approved by #{approver}" if current_user? && @story.admin.present?
     %hr
       - if current_user? && @unapproved_comments.present?
-        %h3 
-          = "unapproved comments(#{@unapproved_comments.count})"  
+        %h3
+          = "unapproved comments(#{@unapproved_comments.count})"
         - if @unapproved_comments.count > 0
           .box
             = render :partial => 'comments/comment', :collection => @unapproved_comments, :as => :comment
         %hr
       - if @comments.count > 0
-        %h3 
+        %h3
           = "comments(#{@comments.count})" if !current_user?
           = "approved comments(#{@comments.count})" if current_user?
           .box

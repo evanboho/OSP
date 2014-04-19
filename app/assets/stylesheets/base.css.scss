@@ -60,10 +60,16 @@ ul { list-style: none; margin: 0; padding: 0;}
 	&.edit { @include background-image(linear-gradient($white, #ffff99)); }
 	&.delete { @include background-image(linear-gradient($white, #ffaaaa)); }
 	&.unapprove { @include background-image(linear-gradient($white, #ffB399)); }
-	&:hover { 
-		@include background-image(linear-gradient(#fff, #aaa)); 
+	&:hover {
+		@include background-image(linear-gradient(#fff, #aaa));
  		@include single-box-shadow(#000066, 0px, 0px, 5px);
 	}
+}
+
+input.button {
+  &.approve, &.unapprove {
+    height: 34px;
+  }
 }
 
 .featurebox {

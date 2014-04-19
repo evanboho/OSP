@@ -1,4 +1,5 @@
 class Story < ActiveRecord::Base
+  attr_accessor :approve
   validates_presence_of :title, :message => "story needs a title"
   validates_presence_of :body, :message => "story is empty"
   validates_numericality_of :age, :allow_blank => true
@@ -11,19 +12,13 @@ class Story < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
 
   scope :unapproved, -> {where("approved_at IS ?", nil)}
-  scope :approved, -> {where("approved_at IS NOT ?", nil)}
+  scope :approved, -> {where.not(approved_at: nil)}
   scope :featured, -> {where(:featured => true)}
 
   before_save :titleize_title
 
-  def approve(approver_id)
-    self.update_attribute(:approved_at, Time.now)
-    self.update_attribute(:admin_id, approver_id)
-  end
-
-  def disapprove
-    self.update_attribute(:approved_at, nil)
-    self.update_attribute(:admin_id, nil)
+  def approve=(is_approved)
+    self.approved_at = is_approved == 'true' ? Time.now : nil
   end
 
   def approver
