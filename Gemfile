@@ -16,6 +16,8 @@ gem 'coffee-rails'
 
 gem 'uglifier', '>= 1.0.3'
 
+gem 'turbolinks'
+
 
 gem 'html5-rails'
 gem 'haml'
