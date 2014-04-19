@@ -7,19 +7,19 @@ gem 'pg'
 
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
-  gem 'sass-rails'
-  gem 'compass'
-  gem 'compass-rails'
-  gem 'susy'
+gem 'compass-rails'
+gem 'compass'
 
-  gem 'compass-h5bp'
-  gem 'html5shiv-rails'
-  gem 'coffee-rails' #, '~> 3.2.1'
+gem 'compass-h5bp'
 
-  gem 'uglifier', '>= 1.0.3'
+gem 'sass-rails'
+# gem 'compass'
+gem 'susy'
+gem 'html5shiv-rails'
+gem 'coffee-rails' #, '~> 3.2.1'
 
-end
+gem 'uglifier', '>= 1.0.3'
+
 
 gem 'html5-rails'
 gem 'haml'
