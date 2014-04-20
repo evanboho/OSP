@@ -11,9 +11,9 @@ class Story < ActiveRecord::Base
   belongs_to :admin
   has_many :comments, :dependent => :destroy
 
-  scope :unapproved, -> {where("approved_at IS ?", nil)}
-  scope :approved, -> {where.not(approved_at: nil)}
-  scope :featured, -> {where(:featured => true)}
+  scope :unapproved, -> { where("approved_at IS ?", nil) }
+  scope :approved, -> { where.not(approved_at: nil) }
+  scope :featured, -> { where(:featured => true) }
 
   before_save :titleize_title
 

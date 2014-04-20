@@ -1,13 +1,9 @@
 class Setting < ActiveRecord::Base
   serialize :settings_hash, Hash
 
-  # before_validation :clean_up_link
-  # validate :link_starts_with_http
-  # validate :page, :length => { :maxmimum => 4 }
-
-  scope :resources, where(:page => "resources")
-  scope :settings, where(:page => "settings")
-  scope :contact_us, where(:page => "contact_us")
+  %w(resources settings contact_us).each do |page|
+    scope page.to_sym, -> { where(page: page) }
+  end
 
   def notifier_email
     self.settings_hash[:email]
@@ -56,7 +52,6 @@ class Setting < ActiveRecord::Base
     def clean_up_link(value)
       return value if value.to(3) == "http"
       http_link = "http://" + value
-      # link = http_link
     end
 
 
