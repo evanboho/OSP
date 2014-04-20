@@ -3,10 +3,11 @@
     %h5
       = comment.title
     %p
-      = markdown(comment.content)
+      = simple_format comment.content
+      -# markdown(comment.content) (Can't figure out how to get Redcarpet to work)
     .date
-      = comment.name.present? ? "Left by #{comment.name}" : "Left" 
+      = comment.name.present? ? "Left by #{comment.name}" : "Left"
       = "#{time_ago_in_words(comment.created_at)} ago"
     - if current_user?
-      .left 
+      .left
         = render 'admin/links', :resource => comment

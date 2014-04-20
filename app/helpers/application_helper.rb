@@ -1,8 +1,10 @@
 module ApplicationHelper
 
   def markdown(text)
-    options = [:hard_wrap, :filter_html, :autolink]
-    Redcarpet.new(text, *options).to_html.html_safe
+    # options = [:hard_wrap, :filter_html, :autolink]
+    markdown = Redcarpet::Markdown.new Redcarpet::Render::HTML
+    markdown.render(text).html_safe
+    text
   end
 
   def html5_shiv
