@@ -1,11 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :load_navbar_counts, :excfept => :current_user?
-  after_action :allow_iframe
+  # after_action :allow_iframe
 
-  def allow_iframe
-    response.headers.except! 'X-Frame-Options'
-  end
+  # def allow_iframe
+  #   response.headers.except! 'X-Frame-Options'
+  # end
 
   helper_method :current_user, :current_user?
 
