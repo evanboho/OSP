@@ -4,6 +4,10 @@ class PagesController < ApplicationController
     @featured = Story.featured.first
   end
 
+  def show
+    render params[:page]
+  end
+
   def resources
     @settings = Setting.resources.order(:id)
   end
@@ -18,7 +22,7 @@ class PagesController < ApplicationController
   def setting
 
   end
-  
+
   def writing_tips
   end
 end

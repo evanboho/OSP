@@ -8,15 +8,15 @@
   %h3.center
     Welcome to Our Story Project
   %p
-    Those who have been impacted by domestic violence can recount their stories here.  
-    By sharing their stories, often after a long silence, our writers have an opportunity to be heard.  
-    Readers can learn, understand, and respond.   
+    Those who have been impacted by domestic violence can recount their stories here.
+    By sharing their stories, often after a long silence, our writers have an opportunity to be heard.
+    Readers can learn, understand, and respond.
     %br
   %div.center
     = link_to "Read a Story", read_story_path, :class => "button"
 
 - content_for :below_featurebox do
-  - if @featured.present?
+  - if false && @featured.present?
     .featurebox
       %h3.center Featured Story
       %hr
@@ -27,6 +27,18 @@
       %hr
       .center
         = link_to "Read More", @featured, :class => "button"
+  - else
+    .featurebox
+      %h3.center Contest
+      %hr
+
+      %p
+        In recognition of October as Domestic Violence Awareness Month, you are
+        invited to add your voice to Stories of Resilience. The contest is seeking
+        submissions that reflect the broad impact of abuse. Contribute your story,
+        personal essay or poem for consideration.
+      %hr
+      .center= link_to "See Contest Rules", page_path('contest'), :class => "button"
 
 
   .featurebox

@@ -38,6 +38,8 @@ OSP::Application.routes.draw do
   end
   post '/add_admin', :to => "admins#add"
   post '/remove_admin', :to => "admins#remove"
+
+  get 'pages/:page', to: 'pages#show', as: 'page'
   root to: 'pages#index'
 
   # The priority is based upon order of creation:
