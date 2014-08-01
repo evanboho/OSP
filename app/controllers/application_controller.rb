@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   after_action :allow_iframe
 
   def allow_iframe
-    response.headers['X-Frame-Options'] = 'ALLOW-FROM http://ourstoryproject.org/'
+    response.headers.except! 'X-Frame-Options'
   end
 
   helper_method :current_user, :current_user?
