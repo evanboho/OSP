@@ -2,6 +2,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :load_navbar_counts, :excfept => :current_user?
 
+  before_filter :allow_iframe_requests
+
+  def allow_iframe_requests
+    response.headers.delete('X-Frame-Options')
+  end
+
   helper_method :current_user, :current_user?
 
 
