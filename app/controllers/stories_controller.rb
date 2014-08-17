@@ -1,12 +1,11 @@
 class StoriesController < ApplicationController
-  before_action :find_story, only: [:show, :edit, :update, :destroy]
 
   def index
     @stories = Story.approved
   end
 
   def show
-    @story = Story.find_by_id(params[:id])
+    @story = Story.find_by(id: params[:id])
     @story = random if params[:id] == "read"
     show_story
   end

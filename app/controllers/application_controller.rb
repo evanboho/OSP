@@ -28,14 +28,4 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def method_missing(method, *args)
-    method = method.to_s
-    if method =~ /find_/
-      klass = method.gsub("find_", "")
-      instance_variable_set(eval(":@#{klass}"), klass.classify.constantize.find(params[:id]))
-    else
-      super
-    end
-  end
-
 end

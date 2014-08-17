@@ -111,6 +111,7 @@ GEM
     simple_form (3.0.2)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
+    spring (1.1.3)
     sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -194,6 +195,7 @@ DEPENDENCIES
   redcarpet (~> 3.1.1)
   sass-rails (~> 4.0.3)
   simple_form
+  spring
   susy
   tinymce-rails
   turbolinks

@@ -5,6 +5,7 @@ gem 'rails', '4.0.8'
 
 gem 'pg'
 
+gem 'spring'
 
 # Gems used only for assets and not required
 # in production environments by default.
