@@ -29,13 +29,16 @@
         = link_to "Read More", @featured, :class => "button"
   - else
     .featurebox
-      %h3.center Contest
+      %h3.center Writing Contest
       %hr
 
       %p
         In recognition of October as Domestic Violence Awareness Month, you are
-        invited to add your voice to Stories of Resilience. The contest is seeking
-        submissions that reflect the broad impact of abuse. Contribute your story,
+        invited to add your voice to Stories of Resilience. The contest,
+        judged by well-known author
+        #{link_to 'Adriana Trigiani', 'http://www.adrianatrigiani.com', target: '_blank' },
+        is seeking submissions that reflect the
+        broad impact of abuse. Contribute your story,
         personal essay or poem for consideration.
       %hr
       .center= link_to "See Contest Rules", page_path('contest'), :class => "button"
