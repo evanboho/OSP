@@ -7,9 +7,11 @@
     %div.info
       = f.input :name, :wrapper_html => {:class => 'name' }, :label => "First Name"
       = f.input :age, :as => :string, :wrapper_html => { :class => 'age' }
-    -# f.input :email, :wrapper_html => { :class => 'email' }
-  %div.info-container
-    %div{ :style => "clear:both;" } Your story
+    .small{style: 'clear:both'}
+      %span.red For Contest purposes only. This will never be displayed to the public.
+    %div.info
+      = f.input :email, :wrapper_html => { :class => 'email' }
+      = f.input :phone
   %div.story
     = f.input :title, :wrapper_html => { :class => 'title'}, :required => false
     = f.input :body, :required => false, :label => false, :input_html => {:class => "tinymce"}

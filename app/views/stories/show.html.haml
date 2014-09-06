@@ -5,6 +5,8 @@
   #caption.show
     %h2
       = @story.title.titleize
+    by #{@story.name}
+
 
 = content_for :story_body do
   .featurebox
@@ -21,7 +23,11 @@
       = "Approved by #{@story.approver_email}" if current_user? && @story.admin.present?
     %hr
       - if current_user?
-
+        %h3 Contact Information (for Admin use only)
+        <b>Email</b>: #{@story.email}<br>
+        <b>Phone</b>: #{@story.phone}<br>
+        %br
+        %hr
         - %w(unapproved approved).each do |filter|
           %h3{id: "#{filter}-comments-count"}
             = "#{filter} comments(<span class='count'>#{@story.comments.send(filter).count}</span>)".html_safe

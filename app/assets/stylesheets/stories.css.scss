@@ -2,13 +2,13 @@
   padding-top: 0px;
   .featurebox {
     .body {
-	  @include border-radius;
+    @include border-radius;
 	  margin-top: 5em;
 	  margin-left: 17em;
 	  background: white;
 	  text-align: left;
       font-size: .8em;
-      min-height: 3em;
+      min-height: 13em;
       padding: 2em;
     p { padding: 0; margin: 0; }
     }
@@ -26,7 +26,7 @@
 	.story {
   		font-size: 10px;
 		p { margin: 0; padding: 0; }
-	} 
+	}
 }
 
 

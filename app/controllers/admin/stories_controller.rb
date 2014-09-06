@@ -60,7 +60,7 @@ class Admin::StoriesController < AdminController
   private
 
   def story_params
-    params.require(:story).permit(:approve, :approved_by, :title, :body)
+    params.require(:story).permit(:approve, :name, :email, :phone, :approved_by, :title, :body)
   end
 
   def find_story

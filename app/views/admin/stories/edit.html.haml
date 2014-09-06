@@ -1,11 +1,6 @@
 = content_for :title do
   Edit Story
 
--#= content_for :caption do
--#  #caption.new
--#    %h2
--#      Edit Story
-
 = content_for :middle do
   .featurebox
     = simple_form_for(@story, :url => admin_story_path(@story)) do |f|
@@ -13,6 +8,9 @@
       %div.small
       %div.info
       %div{ :style => "clear:both;"}
+      = f.input :name
+      = f.input :email
+      = f.input :phone
       %div.story
         = f.input :title, :wrapper_html => { :class => 'title'}, :required => false
         = f.input :body, :required => false, :label => false, :input_html => { :class => "tinymce" }
