@@ -21,23 +21,19 @@
       = "Approved by #{@story.approver_email}" if current_user? && @story.admin.present?
     %hr
       - if current_user?
-        %h3#unapproved-comments-count
-          = "unapproved comments(<span class='count'>#{@story.comments.unapproved.count}</span>)".html_safe
-        .box#unapproved-box
-          = render :partial => 'comments/comment', collection: @story.comments.unapproved, :as => :comment
 
-        %hr
-        %h3#approved-comments-count
-          = "approved comments(<span class='count'>#{@story.comments.approved.count}</span>)".html_safe
-        .box#approved-box
-          = render :partial => 'comments/comment', collection: @story.comments.approved, :as => :comment
+        - %w(unapproved approved).each do |filter|
+          %h3{id: "#{filter}-comments-count"}
+            = "#{filter} comments(<span class='count'>#{@story.comments.send(filter).count}</span>)".html_safe
+          .box{id: "#{filter}-box"}
+            = render :partial => 'comments/comment', collection: @story.comments.send(filter), :as => :comment
+            %hr
 
-        %hr
-      - elsif @comments.count > 0
+      - elsif @story.comments.approved.count > 0
         %h3#approved-comments-count
-          = "comments(#{@comments.count})"
+          = "comments(#{@story.comments.approved.count})"
         .box#approved-box
-          = render :partial => 'comments/comment', :collection => @comments, :as => :comment
+          = render :partial => 'comments/comment', :collection => @story.comments.approved, :as => :comment
         %hr
       %h3 leave a comment
       %div.box
