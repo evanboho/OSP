@@ -17,9 +17,4 @@
             %span.tag
               = "by #{story.name}" if story.name.present?
               = "- #{story.created_at.strftime("%m/%e/%y")}"
-            - if current_user
-              %br
-              %div{style: 'font-size: 14px'}
-                Approved comments: #{story.comments.approved.count}
-              %div{style: 'font-size: 14px'}
-                Unapproved comments: #{story.comments.unapproved.count}
+
