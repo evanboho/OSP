@@ -3,14 +3,21 @@ class Admin::CommentsController < ApplicationController
   before_filter :authenticate_admin!
 
   def edit
-    @comment = Comment.find(params[:id])
     @story = @comment.story
     render 'comments/edit'
   end
 
   def update
+    params[:comment][:approved_by] = if params[:comment].delete(:approve) == 'true'
+      current_user.id
+    else
+      nil
+    end
     @comment.update(comment_params)
-    redirect_to @comment.story
+    respond_to do |format|
+      format.html { redirect_to @comment.story }
+      format.js { }
+    end
   end
 
   def destroy
@@ -20,13 +27,20 @@ class Admin::CommentsController < ApplicationController
     else
       flash[:notice] = "Something went wrong :/"
     end
-    redirect_to @story
+    respond_to do |format|
+      format.html { redirect_to @story }
+      format.js { }
+    end
   end
 
   private
 
   def comment_params
     params.require(:comment).permit(:name, :content, :story_id, :approve, :approved_by)
+  end
+
+  def find_comment
+    @comment = Comment.find(params[:id])
   end
 
 end

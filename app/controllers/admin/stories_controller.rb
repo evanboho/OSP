@@ -1,11 +1,16 @@
 class Admin::StoriesController < AdminController
   before_filter :authenticate_admin!
-  before_filter :find_story, only: [:show, :edit, :update, :destroy]
+  before_filter :find_story, only: [:new_featured, :show, :edit, :update, :destroy]
 
   def edit
   end
 
   def update
+    params[:story][:approved_by] = if params[:story].delete(:approve) == 'true'
+      current_user.id
+    else
+      nil
+    end
     @story.update(story_params)
     redirect_to story_path(@story)
   end
@@ -27,13 +32,9 @@ class Admin::StoriesController < AdminController
   end
 
   def new_featured
-    Story.featured.all.each do |story|
-      story.update_attribute(:featured, false)
-    end
-    @story = Story.find(params[:featured])
-    @story.update_attribute(:featured, true)
+    @story.feature!
     @stories = Story.approved
-    render 'admin/featured'
+    redirect_to admin_featured_story_path
   end
 
   def with_unapproved_comments
@@ -59,7 +60,11 @@ class Admin::StoriesController < AdminController
   private
 
   def story_params
-    params.require(:story).permit(:approve, :approved_by)
+    params.require(:story).permit(:approve, :approved_by, :title, :body)
+  end
+
+  def find_story
+    @story = Story.find params[:id]
   end
 
 end

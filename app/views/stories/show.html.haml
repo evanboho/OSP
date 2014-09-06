@@ -18,21 +18,26 @@
     .date
       = "Submitted #{time_ago_in_words(@story.created_at)} ago"
       %br
-      = "Approved by #{approver}" if current_user? && @story.admin.present?
+      = "Approved by #{@story.approver_email}" if current_user? && @story.admin.present?
     %hr
-      - if current_user? && @unapproved_comments.present?
-        %h3
-          = "unapproved comments(#{@unapproved_comments.count})"
-        - if @unapproved_comments.count > 0
-          .box
-            = render :partial => 'comments/comment', :collection => @unapproved_comments, :as => :comment
+      - if current_user?
+        %h3#unapproved-comments-count
+          = "unapproved comments(<span class='count'>#{@story.comments.unapproved.count}</span>)".html_safe
+        .box#unapproved-box
+          = render :partial => 'comments/comment', collection: @story.comments.unapproved, :as => :comment
+
         %hr
-      - if @comments.count > 0
-        %h3
-          = "comments(#{@comments.count})" if !current_user?
-          = "approved comments(#{@comments.count})" if current_user?
-          .box
-            = render :partial => 'comments/comment', :collection => @comments, :as => :comment
+        %h3#approved-comments-count
+          = "approved comments(<span class='count'>#{@story.comments.approved.count}</span>)".html_safe
+        .box#approved-box
+          = render :partial => 'comments/comment', collection: @story.comments.approved, :as => :comment
+
+        %hr
+      - elsif @comments.count > 0
+        %h3#approved-comments-count
+          = "comments(#{@comments.count})"
+        .box#approved-box
+          = render :partial => 'comments/comment', :collection => @comments, :as => :comment
         %hr
       %h3 leave a comment
       %div.box

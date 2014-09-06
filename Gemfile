@@ -35,6 +35,15 @@ gem 'bullet', group: :development
 
 gem 'redcarpet', '~> 3.1.1'
 
+group :test, :development do
+  gem 'pry'
+  gem 'pry-debugger'
+  gem 'rspec-rails'
+  gem 'spring-commands-rspec'
+  gem 'fabrication'
+  gem 'faker'
+end
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -1,10 +1,9 @@
-.featurebox
+.featurebox.comment{data: { comment_id: comment.id, approved: comment.approved?.to_s }}
   .approved
     %h5
       = comment.title
     %p
-      = simple_format comment.content
-      -# markdown(comment.content) (Can't figure out how to get Redcarpet to work)
+      = comment.content
     .date
       = comment.name.present? ? "Left by #{comment.name}" : "Left"
       = "#{time_ago_in_words(comment.created_at)} ago"

@@ -1,11 +1,10 @@
+- remote = resource.is_a?(Comment)
 .admin-controls
-  = form_for [:admin, resource] do |f|
-    = f.hidden_field :approved_by, value: current_user.id
-    - if resource.approved?
-      = f.hidden_field :approve, value: false
-      = f.submit 'unapprove', class: 'button left unapprove'
-    - else
-      = f.hidden_field :approve, value: true
-      = f.submit 'approve', class: 'button left approve'
+  = form_for [:admin, resource], remote: remote do |f|
+
+    - approve_button = resource.approved? ? 'unapprove' : 'approve'
+    = f.hidden_field :approve, value: !resource.approved?
+    = f.submit approve_button, class: "button left #{approve_button}"
+
     = link_to 'edit', edit_path(resource), :class => 'button left edit'
-    = link_to 'delete', delete_path(resource), method: :delete, :confirm => 'Are you sure?', :class => 'button left delete'
+    = link_to 'delete', delete_path(resource), method: :delete, data: { :confirm => 'Are you sure?' }, :class => 'button left delete', remote: remote

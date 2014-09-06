@@ -5,7 +5,7 @@
   - if @story
     .featured_story
       .featurebox
-        %h3 Current Featured Story  
+        %h3 Current Featured Story
         %hr
         .story
           %h3
@@ -17,5 +17,5 @@
     .featurebox
       %h3 Choose New Featured Story
       = form_tag admin_new_featured_story_path do
-        = select_tag "featured", options_from_collection_for_select(@stories, "id", "title"), :include_blank => true, :height => "120"
+        = select_tag "id", options_from_collection_for_select(@stories, "id", "title"), :include_blank => true, :height => "120"
         = submit_tag
