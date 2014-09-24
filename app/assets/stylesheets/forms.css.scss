@@ -26,6 +26,13 @@ form { @include clearfix; }
   div.email { z-index: 100; clear: both; position: relative;
     span.error { left: -6em; z-index: 100; }
   }
+  &.new_story {
+    .email {
+      .error {
+        left: 27em;
+      }
+    }
+  }
   div.title { margin: 10px auto; display: inline; }
   div.info, div.story, div.comment {
 	@include clearfix;
@@ -94,4 +101,9 @@ form { @include clearfix; }
     input { width: 10em; }
     textarea { width: 22em; }
   }
+  div.name {
+    span.error {
+      left: 18em;
+      background-color: rgba(255, 240, 240, 0.9);
+  }}
 }

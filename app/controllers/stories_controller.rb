@@ -45,7 +45,7 @@ protected
   end
 
   def story_params
-    params.require(:story).permit(:name, :age, :title, :body)
+    params.require(:story).permit(:name, :age, :title, :body, :email, :phone)
   end
 
 end
