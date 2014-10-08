@@ -16,12 +16,12 @@ class Admin::StoriesController < AdminController
   end
 
   def approved
-    @stories = Story.approved
+    @stories = Story.approved.order(:created_at)
     render 'index'
   end
 
   def unapproved
-    @stories = Story.unapproved
+    @stories = Story.unapproved.order(:created_at)
     render 'index'
   end
 
