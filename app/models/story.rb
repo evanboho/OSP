@@ -13,6 +13,7 @@ class Story < ActiveRecord::Base
   scope :unapproved, -> { where("approved_at IS ?", nil) }
   scope :approved, -> { where.not(approved_at: nil) }
   scope :featured, -> { where(:featured => true) }
+  scope :with_unapproved_comments, -> { joins(:comments).where(comments: { approved_at: nil }).uniq }
 
   before_save :titleize_title
 

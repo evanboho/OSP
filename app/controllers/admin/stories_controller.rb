@@ -38,8 +38,8 @@ class Admin::StoriesController < AdminController
   end
 
   def with_unapproved_comments
-    @stories = Comment.unapproved.collect(&:story)
-    if !@stories.first.nil?
+    @stories = Story.with_unapproved_comments.includes(:comments)
+    if !@stories.present?
       redirect_to stories_path, :notice => "no more stories with unapproved comments"
     else
       render 'index'
