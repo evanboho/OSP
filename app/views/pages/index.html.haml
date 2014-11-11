@@ -5,18 +5,24 @@
       %div Sharing stories of struggle and resilience
 
 - content_for :featurebox do
-  %h3.center
-    Welcome to Our Story Project
+  %h3.center Writing Contest Winners
+  %hr
+
   %p
-    Those who have been impacted by domestic violence can recount their stories here.
-    By sharing their stories, often after a long silence, our writers have an opportunity to be heard.
-    Readers can learn, understand, and respond.
+    Congratulations to the winners of the Writing Contest!
     %br
-  %div.center
-    = link_to "Read a Story", read_story_path, :class => "button"
+    %b First Place: Why Didn't She Leave by Enigmuse
+    %br
+    %b Second Place: Bombs and Storms by Merriwether
+    and
+    %b Good and Useful by Wendy
+    %br
+    For more information, visit
+    %a{href: 'http://www.familyshelterservice.org', target: '_blank'} www.familyshelterservice.org
+  %hr
 
 - content_for :below_featurebox do
-  - if false && @featured.present?
+  - if @featured.present?
     .featurebox
       %h3.center Featured Story
       %hr
@@ -27,24 +33,16 @@
       %hr
       .center
         = link_to "Read More", @featured, :class => "button"
-  - else
-    .featurebox
-      %h3.center Writing Contest Winners
-      %hr
-
-      %p
-        Congratulations to the winners of the Writing Contest!
-        %br
-        %b First Place: Why Didn't She Leave by Enigmuse
-        %br
-        %b Second Place: Bombs and Storms by Merriwether
-        and
-        %b Good and Useful by Wendy
-        %br
-        For more information, visit
-        %a{href: 'http://www.familyshelterservice.org', target: '_blank'} www.familyshelterservice.org
-      %hr
-
+  .featurebox
+    %h3.center
+      Welcome to Our Story Project
+    %p
+      Those who have been impacted by domestic violence can recount their stories here.
+      By sharing their stories, often after a long silence, our writers have an opportunity to be heard.
+      Readers can learn, understand, and respond.
+      %br
+    %div.center
+      = link_to "Read a Story", read_story_path, :class => "button"
 
   .featurebox
     %h3.center My Journal - My Voice
