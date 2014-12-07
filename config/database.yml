@@ -25,4 +25,6 @@ production:
   database: osp_production
   host: localhost
   encoding: UTF8
+  username: <%= ENV['POSTGRES_USER'] %>
+  password: <%= ENV['POSTGRES_PASS'] %>
 
