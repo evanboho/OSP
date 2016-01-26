@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.0.0"
+ruby "2.2.1"
 
 gem 'rails', '4.0.8'
 
@@ -37,7 +37,7 @@ gem 'redcarpet', '~> 3.1.1'
 
 group :test, :development do
   gem 'pry'
-  gem 'pry-debugger'
+  gem 'pry-byebug'
   gem 'rspec-rails'
   gem 'spring-commands-rspec'
   gem 'fabrication'
@@ -51,7 +51,7 @@ end
 # gem 'jbuilder'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'

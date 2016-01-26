@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 20140906232540) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "firstname"
     t.string   "lastname"
   end
@@ -43,16 +43,16 @@ ActiveRecord::Schema.define(version: 20140906232540) do
     t.string   "email"
     t.integer  "story_id"
     t.integer  "approved_by"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "approved_at"
   end
 
   create_table "settings", force: true do |t|
     t.string   "page"
     t.text     "settings_hash"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "stories", force: true do |t|
@@ -62,17 +62,12 @@ ActiveRecord::Schema.define(version: 20140906232540) do
     t.boolean  "gender"
     t.string   "name"
     t.integer  "age"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "email"
     t.boolean  "featured"
     t.string   "approved_by"
     t.string   "phone"
-  end
-
-  create_table "users", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
 end

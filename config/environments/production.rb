@@ -59,6 +59,16 @@ OSP::Application.configure do
   # the I18n.default_locale when a translation can not be found)
   config.i18n.fallbacks = true
 
+  config.action_mailer.delivery_method = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => "gmail.com",
+    :user_name            => ENV['EMAIL'],
+    :password             => ENV['EMAIL_PASS'],
+    :authentication       => "plain",
+    :enable_starttls_auto => true
+  }
+
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
